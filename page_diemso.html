@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu kết quả học tập</title>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+
+        .container { max-width: 1400px; margin: auto; background: #fff; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; }
+
+        .header { background: linear-gradient(135deg, #2c3e50, #34495e); padding: 30px; text-align: center; color: white; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+
+        .search-section { background: #f8f9fa; padding: 30px; border-bottom: 1px solid #e9ecef; }
+        .search-box { max-width: 800px; margin: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+        .search-row { display: flex; width: 100%; gap: 10px; margin-bottom: 15px; }
+        .search-input { flex: 1; padding: 15px 20px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; }
+        .search-input:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.3); }
+        .search-select { padding: 15px 20px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; background: white; min-width: 200px; }
+        .search-btn { padding: 15px 30px; background: linear-gradient(135deg,#667eea,#764ba2);
+            border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .search-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102,126,234,0.4); }
+        .reset-btn { padding: 15px 30px; background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .reset-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(149,165,166,0.4); }
+
+        .table-container { overflow-x: auto; margin-top: 20px; padding: 0 20px 20px; }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th { background: #2c3e50; color: white; padding: 15px; text-align: left; position: sticky; top: 0; text-align: center; }
+        td { padding: 12px 15px; border-bottom: 1px solid #e9ecef; }
+        tr:hover { background: #f8f9fa; }
+        tr.highlight { background: #fff176 !important; font-weight: bold; }
+
+        .loading { text-align: center; padding: 40px; font-size: 1.2em; }
+        .loading-spinner { width: 40px; height: 40px; border: 4px solid #eee; border-top: 4px solid #667eea;
+            border-radius: 50%; animation: spin 1s linear infinite; margin: auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .score-cell { text-align: center; }
+        .score-excellent { background: #d4efdf; color: #27ae60; padding: 5px 10px; border-radius: 20px; }
+        .score-good { background: #d6eaf8; color: #3498db; padding: 5px 10px; border-radius: 20px; }
+        .score-average { background: #fcf3cf; color: #f39c12; padding: 5px 10px; border-radius: 20px; }
+        .score-poor { background: #f5b7b1; color: #e74c3c; padding: 5px 10px; border-radius: 20px; }
+
+        .time-badge { background: #d6eaf8; padding: 5px 10px; border-radius: 12px; color: #1f618d; }
+
+        .student-info { background: #e8f5e8; margin: 20px; padding: 20px; border-radius: 10px;
+            border-left: 5px solid #27ae60; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 20px; margin-top: 15px; }
+        .info-item { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        .search-options { display: flex; gap: 15px; margin-bottom: 15px; }
+        .search-option { display: flex; align-items: center; gap: 5px; }
+        
+        .results-info { background: #e3f2fd; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; }
+        
+        /* Nút lên đầu trang */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+        
+        .back-to-top:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .search-row { flex-direction: column; }
+            .search-select { min-width: 100%; }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="components/navbar.js"></script>
+    <script>loadNavbar();</script>
+    
+    <div class="container">
+
+        <div class="header">
+            <h1>🎓 HỆ THỐNG TRA CỨU KẾT QUẢ</h1>
+            <p>Tra cứu kết quả học tập trực tuyến</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <div class="search-row">
+                    <select id="searchColumn" class="search-select">
+                        <option value="2">Tìm theo Họ và tên</option>
+                        <option value="4">Tìm theo Lớp</option>
+                        <option value="1">Tìm theo Thời gian</option>
+                        <option value="2">Tìm theo Điểm</option>
+                        <option value="5">Tìm theo Nhận xét</option>
+                    </select>
+                    <input id="searchInput" class="search-input" placeholder="Nhập từ khóa để tìm kiếm...">
+                </div>
+                <div class="search-row">
+                    <button class="search-btn" onclick="searchStudent()">🔍 Tìm kiếm</button>
+                    <button class="reset-btn" onclick="resetSearch()">🔄 Hiển thị tất cả</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="studentResult"></div>
+
+        <div class="table-container">
+            <div id="resultsInfo" class="results-info" style="display: none;">
+                <span id="resultsCount">Đang tìm kiếm...</span>
+                <span id="searchCriteria"></span>
+            </div>
+            <div id="sheetData" class="loading">
+                <div class="loading-spinner"></div>
+                Đang tải dữ liệu...
+            </div>
+        </div>
+    </div>
+
+    <!-- Nút lên đầu trang -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Lên đầu trang">
+        ↑
+    </button>
+
+<script>
+    const SHEET_ID = "18JkGwtftDdCK5PSrzqsTkMdxH7XWLpjsW1IHjR7vADQ";
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+    let cachedData = null;
+    let normalizedData = null;
+    let currentSearchResults = null;
+
+    // Dữ liệu mẫu để demo (sẽ được thay thế bằng dữ liệu thực từ Google Sheets)
+    const sampleData = [
+        ["STT", "Thời gian", "Điểm", "Họ và tên", "Lớp", "Môn học", "Nhận xét"],
+        ["1", "15/09/2023", "8.5", "Nguyễn Văn Tú", "10A1", "Toán", "Học lực khá, cần cố gắng hơn"],
+        ["2", "16/09/2023", "9.2", "Trần Thị Minh", "10A2", "Văn", "Học lực giỏi, có tiến bộ"],
+        ["3", "17/09/2023", "7.8", "Lê Văn An", "10A1", "Anh", "Học lực khá, chăm chỉ"],
+        ["4", "18/09/2023", "6.5", "Phạm Thị Dung", "10A3", "Lý", "Học lực trung bình, cần nỗ lực"],
+        ["5", "19/09/2023", "8.9", "Hoàng Văn Bình", "10A2", "Hóa", "Học lực khá giỏi"],
+        ["6", "20/09/2023", "9.5", "Vũ Thị Cúc", "10A1", "Sinh", "Học lực xuất sắc"],
+        ["7", "21/09/2023", "7.2", "Đặng Văn Đạt", "10A3", "Sử", "Học lực khá"],
+        ["8", "22/09/2023", "8.1", "Bùi Thị Em", "10A2", "Địa", "Học lực khá, tiến bộ"],
+        ["9", "23/09/2023", "6.8", "Mai Văn Giang", "10A1", "GDCD", "Học lực trung bình khá"],
+        ["10", "24/09/2023", "9.8", "Lý Thị Hoa", "10A3", "Toán", "Học lực xuất sắc, có năng khiếu"]
+    ];
+
+    function removeVietnameseTones(str) {
+        return str.normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d").replace(/Đ/g, "D")
+            .toLowerCase().trim();
+    }
+
+    // Hàm trích xuất CHỮ CÁI ĐẦU TIÊN của TÊN
+    function extractFirstLetterOfLastName(fullName) {
+        if (!fullName) return '';
+        
+        // Tách chuỗi thành mảng các từ
+        const words = fullName.trim().split(' ');
+        
+        // Lấy từ cuối cùng (tên)
+        const lastName = words[words.length - 1];
+        
+        // Lấy chữ cái đầu tiên của tên và chuyển thành chữ thường
+        const firstLetter = lastName.charAt(0).toLowerCase();
+        
+        return removeVietnameseTones(firstLetter);
+    }
+
+    // Hàm sắp xếp dữ liệu theo CHỮ CÁI ĐẦU của TÊN A-Z
+    function sortDataByFirstNameLetter(data) {
+        if (!data || data.length <= 1) return data;
+        
+        const headers = data[0];
+        const rows = data.slice(1);
+        
+        // Sắp xếp các hàng theo CHỮ CÁI ĐẦU của TÊN
+        const sortedRows = rows.sort((a, b) => {
+            const letterA = extractFirstLetterOfLastName(a[3]); // Cột Họ và tên là index 3
+            const letterB = extractFirstLetterOfLastName(b[3]);
+            
+            return letterA.localeCompare(letterB);
+        });
+        
+        return [headers, ...sortedRows];
+    }
+
+    async function loadSheetData() {
+        try {
+            const response = await fetch(`${SHEET_URL}&t=${Date.now()}`);
+            const text = await response.text();
+            const json = JSON.parse(text.substring(47).slice(0, -2));
+
+            const rows = json.table.rows;
+            const headers = json.table.cols.map(c => c.label);
+            const data = [headers];
+
+            rows.forEach(r => {
+                const row = r.c.map((c, index) => {
+                    if (!c) return "";
+                    
+                    // Xử lý cột ngày tháng
+                    if (c.f && headers[index].toLowerCase().includes('thời gian')) {
+                        const fullDate = c.f;
+                        // Chỉ lấy phần ngày (bỏ giờ) - "17/11/2025"
+                        return fullDate.split(' ')[0];
+                    }
+                    
+                    return c.v ? c.v : "";
+                });
+                data.push(row);
+            });
+
+            // SẮP XẾP DỮ LIỆU THEO CHỮ CÁI ĐẦU CỦA TÊN A-Z TỰ ĐỘNG
+            cachedData = sortDataByFirstNameLetter(data);
+            
+            // Chuẩn hóa dữ liệu để tìm kiếm
+            normalizedData = cachedData.slice(1).map(row => ({
+                original: row,
+                normalized: row.map(cell => removeVietnameseTones(String(cell)))
+            }));
+            
+            displayData(cachedData);
+        } catch (error) {
+            console.error("Lỗi khi tải dữ liệu:", error);
+            // Sử dụng dữ liệu mẫu
+            cachedData = sortDataByFirstNameLetter(sampleData);
+            normalizedData = cachedData.slice(1).map(row => ({
+                original: row,
+                normalized: row.map(cell => removeVietnameseTones(String(cell)))
+            }));
+            displayData(cachedData);
+            
+            document.getElementById("sheetData").innerHTML = `
+                <div style="background:#fff3cd;padding:20px;border-radius:10px;border-left:5px solid #ffc107;">
+                    <h3>⚠️ Đang sử dụng dữ liệu mẫu</h3>
+                    <p>Không thể kết nối đến Google Sheets. Đang sử dụng dữ liệu demo.</p>
+                </div>`;
+        }
+    }
+
+    function displayData(data, highlightRows = []) {
+        const headers = data[0];
+        const rows = data.slice(1);
+
+
+
+        //let html = `<table><thead><tr>${headers.map((h, i) => `<th data-column="${i}">${h}</th>`).join("")}</tr></thead><tbody>`;
+
+        const columnsToShow = [0, 1, 2, 3, 4, 5]; // STT, Điểm, Họ và tên, Nhận xét
+    
+        let html = `<table><thead><tr>${columnsToShow.map(i => `<th>${headers[i]}</th>`).join("")}</tr></thead><tbody>`;
+
+        // rows.forEach((row, rowIndex) => {
+        //     const isHighlighted = highlightRows.includes(rowIndex);
+
+        //     // hiển thị nội dung các cột
+        //     html += `<tr class="${isHighlighted ? 'highlight' : ''}">${row.map((cell, i) => {
+        //         if (i === 1) return `<td><span class="time-badge">${cell}</span></td>`;
+        //         if (i === 2) {
+        //             const s = parseFloat(cell);
+        //             return `<td class="score-cell ${getScoreClass(s)}" style="background:#a8f0a5; color:#000; font-weight:bold;">${cell}</td>`;
+        //         }
+        //         return `<td>${cell}</td>`;
+        //     }).join("")}</tr>`;
+        // });
+
+        rows.forEach((row, rowIndex) => {
+        const isHighlighted = highlightRows.includes(rowIndex);
+        
+        // CHỈ lấy các ô trong columnsToShow
+        html += `<tr class="${isHighlighted ? 'highlight' : ''}">${columnsToShow.map(columnIndex => {
+            const cell = row[columnIndex];
+            
+            // Áp dụng định dạng đặc biệt cho các cột cụ thể
+            if (columnIndex === 1) { // Cột Thời gian
+                return `<td><span class="time-badge">${cell}</span></td>`;
+            }
+            if (columnIndex === 2) { // Cột Điểm
+                const s = parseFloat(cell);
+                return `<td class="score-cell ${getScoreClass(s)}" style="background:#a8f0a5; color:#000; font-weight:bold;">${cell}</td>`;
+            }
+            // Các cột còn lại hiển thị bình thường
+            return `<td>${cell}</td>`;
+        }).join("")}</tr>`;
+    });
+
+        html += "</tbody></table>";
+        document.getElementById("sheetData").innerHTML = html;
+    }
+
+    function getScoreClass(s) {
+        if (s >= 900) return "score-excellent";
+        if (s >= 800) return "score-good";
+        if (s >= 700) return "score-average";
+        return "score-poor";
+    }
+
+    function searchStudent() {
+        const input = document.getElementById("searchInput").value;
+        const columnIndex = parseInt(document.getElementById("searchColumn").value);
+        const keyword = removeVietnameseTones(input);
+
+        if (!normalizedData) {
+            alert("Dữ liệu chưa được tải xong. Vui lòng đợi...");
+            return;
+        }
+
+        if (!keyword) {
+            alert("Vui lòng nhập từ khóa tìm kiếm!");
+            return;
+        }
+
+        // Tìm kiếm trong cột được chọn
+        const foundRows = [];
+        const highlightIndexes = [];
+
+        normalizedData.forEach((item, index) => {
+            if (item.normalized[columnIndex].includes(keyword)) {
+                foundRows.push(item.original);
+                highlightIndexes.push(index);
+            }
+        });
+
+        // Hiển thị kết quả
+        if (foundRows.length > 0) {
+            displayData(cachedData, highlightIndexes);
+            
+            document.getElementById("resultsInfo").style.display = "flex";
+            document.getElementById("resultsCount").textContent = `Tìm thấy ${foundRows.length} kết quả`;
+            document.getElementById("searchCriteria").textContent = `Tìm theo "${cachedData[0][columnIndex]}" với từ khóa "${input}"`;
+            
+            displaySearchResult(foundRows[0], input, columnIndex);
+            
+            // Cuộn đến kết quả đầu tiên
+            if (highlightIndexes.length > 0) {
+                const table = document.querySelector("table tbody");
+                const firstRow = table.getElementsByTagName("tr")[highlightIndexes[0]];
+                firstRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        } else {
+            displayData(cachedData);
+            document.getElementById("resultsInfo").style.display = "flex";
+            document.getElementById("resultsCount").textContent = "Không tìm thấy kết quả nào";
+            document.getElementById("searchCriteria").textContent = `Tìm theo "${cachedData[0][columnIndex]}" với từ khóa "${input}"`;
+            
+            document.getElementById("studentResult").innerHTML = `
+                <div style="background:#ffeaea;padding:20px;margin:20px;border-radius:10px;border-left:5px solid #e74c3c;">
+                    <h3>❌ Không tìm thấy</h3>
+                    <p>Không tìm thấy kết quả nào với từ khóa "<b>${input}</b>" trong cột <b>${cachedData[0][columnIndex]}</b></p>
+                </div>`;
+        }
+        
+        currentSearchResults = foundRows;
+    }
+
+    function resetSearch() {
+        document.getElementById("searchInput").value = "";
+        document.getElementById("searchColumn").selectedIndex = 0;
+        document.getElementById("resultsInfo").style.display = "none";
+        document.getElementById("studentResult").innerHTML = "";
+        displayData(cachedData);
+        currentSearchResults = null;
+    }
+
+    function displaySearchResult(data, keyword, columnIndex) {
+        const resultDiv = document.getElementById("studentResult");
+        const columnNames = cachedData[0];
+
+        resultDiv.innerHTML = `
+            <div class="student-info">
+                <h3>✅ Tìm thấy kết quả</h3>
+                <p>Tìm thấy kết quả với từ khóa "<b>${keyword}</b>" trong cột <b>${columnNames[columnIndex]}</b></p>
+
+                <div class="info-grid">
+                    <div class="info-item"><b>👤 Họ tên:</b> ${data[2]}</div>
+                    <div class="info-item"><b>🏫 Lớp:</b> ${data[3]}</div>
+                    <div class="info-item"><b>⏰ Thời gian:</b> <span class="time-badge">${data[0]}</span></div>
+                    <div class="info-item"><b>📊 Điểm:</b> <span class="${getScoreClass(parseFloat(data[1]))}">${data[1]}</span></div>
+                    <div class="info-item" style="grid-column:1/-1;"><b>💬 Nhận xét:</b> "${data[5]}"</div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Hàm cuộn lên đầu trang
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Hàm kiểm tra vị trí cuộn để hiển thị nút
+    function toggleBackToTopButton() {
+        const backToTopButton = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    }
+
+    // Tải dữ liệu và thiết lập sự kiện
+    window.onload = function() {
+        loadSheetData();
+        window.addEventListener('scroll', toggleBackToTopButton);
+    };
+    
+    // Cho phép tìm kiếm bằng phím Enter
+    document.getElementById("searchInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            searchStudent();
+        }
+    });
+</script>
+
+</body>
+</html>

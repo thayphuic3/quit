@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation Bar */
+        /*.navbar {*/
+        /*    display: flex;*/
+        /*    justify-content: space-between;*/
+        /*    align-items: center;*/
+        /*    background: white;*/
+        /*    padding: 15px 40px;*/
+        /*    box-shadow: 0 2px 5px rgba(0,0,0,0.1);*/
+        /*    position: sticky;*/
+        /*    top: 0;*/
+        /*    z-index: 1000;*/
+        /*}*/
+        
+        /*.logo-link{*/
+        /*    text-decoration: none;*/
+        /*}*/
+
+        /*.logo {*/
+        /*    font-size: 24px;*/
+        /*    font-weight: bold;*/
+        /*    color: #333;*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+            
+        /*}*/
+
+        /*.logo-icon {*/
+        /*    font-size: 28px;*/
+        /*    margin-right: 10px;*/
+        /*}*/
+
+        /*.nav-menu {*/
+        /*    display: flex;*/
+        /*    list-style: none;*/
+        /*    gap: 20px;*/
+        /*}*/
+
+        /*.nav-item {*/
+        /*    position: relative;*/
+        /*}*/
+
+        /*.nav-link, .dropdown-toggle {*/
+        /*    text-decoration: none;*/
+        /*    color: #333;*/
+        /*    font-weight: 500;*/
+        /*    padding: 12px 30px;*/
+        /*    border-radius: 5px;*/
+        /*    transition: all 0.3s ease;*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    justify-content: center;*/
+        /*    min-width: 140px;*/
+        /*    border: 2px solid transparent;*/
+        /*    background: white;*/
+        /*    font-size: 16px;*/
+        /*}*/
+
+        /*.nav-link:hover, .dropdown-toggle:hover {*/
+        /*    background-color: #007bff;*/
+        /*    color: white;*/
+        /*    border-color: #007bff;*/
+        /*}*/
+
+        /*.dropdown {*/
+        /*    position: relative;*/
+        /*}*/
+
+        /*.dropdown-content {*/
+        /*    display: none;*/
+        /*    position: absolute;*/
+        /*    right: 0;*/
+        /*    background: white;*/
+        /*    min-width: 210px;*/
+        /*    box-shadow: 0 4px 12px rgba(0,0,0,0.1);*/
+        /*    border-radius: 5px;*/
+        /*    overflow: hidden;*/
+        /*    z-index: 1001;*/
+        /*    top: 100%;*/
+        /*    margin-top: 0; */
+        /*}*/
+
+        /* THÊM: Tạo phần tử giả để kết nối dropdown */
+        /*.dropdown-content::before {*/
+        /*    content: '';*/
+        /*    position: absolute;*/
+        /*    top: -5px;*/
+        /*    left: 0;*/
+        /*    right: 0;*/
+        /*    height: 5px;*/
+        /*    background: transparent;*/
+        /*}*/
+
+        /* .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            cursor: pointer;
+        } */
+
+        /* .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: #007bff;
+        } */
+
+        /* SỬA: Thay đổi cách hiển thị dropdown */
+        /* .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        } */
+
+        /* .dropdown-toggle {
+            cursor: pointer;
+            position: relative;
+        } */
+
+        /* .dropdown-toggle::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 8px;
+        } */
+
+        /* Content Area */
+        .content-area {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            min-height: 500px;
+        }
+
+        /* HERO / BANNER */
+        .banner {
+            background: url('https://img4.thuthuatphanmem.vn/uploads/2020/05/13/hinh-nen-4k-dep-cho-may-tinh_062610678.jpg') center/cover no-repeat;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            padding-left: 60px;
+            color: black;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        /* CONTENT */
+        .container {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .test-box {
+            padding: 20px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-box h2 {
+            margin-top: 0;
+        }
+
+        .test-info p {
+            margin: 5px 0;
+        }
+
+        .test-img {
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .test-img img {
+            width: 300px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .test-img img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                gap: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-link, .dropdown-toggle {
+                min-width: 120px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .test-img img {
+                width: 150px;
+            }
+            
+            .test-img img:hover {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <!--<nav class="navbar">-->
+    <!--    <a href="../HomePage.html" class="logo-link">-->
+    <!--        <div class="logo">-->
+    <!--            <span class="logo-icon">🏆</span>-->
+    <!--            Thầy Phú Learning-->
+    <!--        </div>-->
+    <!--    </a>-->
+        
+    <!--    <ul class="nav-menu">-->
+    <!--        <li class="nav-item">-->
+    <!--            <a href="../HomePage.html" class="nav-link">Trang Chủ</a>-->
+    <!--        </li>-->
+    <!--        <li class="nav-item dropdown">-->
+    <!--            <div class="dropdown-toggle">-->
+    <!--                Luyện Bài Tập-->
+    <!--            </div>-->
+    <!--            <div class="dropdown-content">-->
+    <!--                <a href="#">IC3 GS6 Spark Level 1</a>-->
+    <!--                <a href="#">IC3 GS6 Spark Level 2</a>-->
+    <!--                <a href="#">IC3 GS6 Spark Level 3</a>-->
+    <!--            </div>-->
+    <!--        </li>-->
+    <!--    </ul>-->
+    <!--</nav>-->
+    
+    
+    
+    <div id="navbar-container"></div>
+    
+    <script src="../components/navbar.js"></script>
+    <script>loadNavbar();</script>
+
+    <!-- Banner -->
+    <div class="banner">IC3 GS6 Spark Level 2</div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 1: Căn Bản Về Công Nghệ</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv2cd1/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 2: Công dân số</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv2cd2/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+        
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 3: Quản lý thông tin</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv1cd1/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+        
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 4: Sáng tạo nội dung</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv1cd1/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+        
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 5: Giao tiếp kĩ thuật số</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv1cd1/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+        
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 6: Cộng tác</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv1cd1/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+        
+        <div class="test-box">
+            <div class="test-info">
+                <h2>Chủ Đề 7: An toàn và bảo mật</h2>
+                <p><b>Thời gian:</b> Không giới hạn</p>
+                <p><b>Điểm đạt:</b> 1000</p>
+                <p><b>Điểm tối đa:</b> 1000</p>
+            </div>
+            <a href="lv1cd1/index.html" class="test-img-link">
+    		<div class="test-img">
+        		<img src="../picture/bat_dau.png" alt="Bắt đầu bài học" />
+    		</div>
+	    </a>
+        </div>
+    </div>
+
+    <script>
+        // THÊM: JavaScript để đảm bảo dropdown hoạt động mượt
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const content = dropdown.querySelector('.dropdown-content');
+                
+                // Giữ dropdown mở khi hover cả toggle và content
+                dropdown.addEventListener('mouseenter', function() {
+                    content.style.display = 'block';
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    content.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* CHỈ GIỮ LẠI CSS RIÊNG CỦA HOMEPAGE */
+        .ranking-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 60px 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            gap: 50px;
+        }
+
+        .rank-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 0 1 auto;
+            transition: transform 0.4s ease;
+        }
+
+        .rank-item:hover {
+            transform: translateY(-15px);
+        }
+
+        .rank-2 { order: 1; margin-bottom: 0; }
+        .rank-1 { order: 2; margin-bottom: 40px; }
+        .rank-3 { order: 3; margin-bottom: 0; }
+
+        .rank-image-container {
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 4px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .rank-image-container:hover {
+            transform: scale(1.25);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            z-index: 100;
+            border-width: 5px;
+        }
+
+        .rank-1 .rank-image-container:hover {
+            transform: scale(1.3);
+            box-shadow: 0 25px 50px rgba(255,215,0,0.4);
+        }
+
+        .rank-1 .rank-image-container {
+            width: 280px;
+            height: 210px;
+            border-color: gold;
+            background: linear-gradient(135deg, #fff9e6, #fff3cc);
+        }
+
+        .rank-2 .rank-image-container {
+            width: 250px;
+            height: 188px;
+            border-color: silver;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .rank-3 .rank-image-container {
+            width: 250px;
+            height: 188px;
+            border-color: #cd7f32;
+            background: linear-gradient(135deg, #fdf5e6, #faebd7);
+        }
+
+        .rank-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 11px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .rank-image-container:hover .rank-image {
+            transform: scale(1.1);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .rank-badge {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            padding: 8px 20px;
+            border-radius: 25px;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .rank-item:hover .rank-badge {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .rank-1 .rank-badge { background: gold; color: #333; }
+        .rank-2 .rank-badge { background: silver; color: #333; }
+        .rank-3 .rank-badge { background: #cd7f32; color: white; }
+
+        .rank-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            transition: all 0.4s ease;
+        }
+
+        .rank-item:hover .rank-name {
+            transform: scale(1.05);
+            color: #007bff;
+        }
+
+        .rank-score {
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+        }
+
+        .rank-item:hover .rank-score {
+            transform: scale(1.05);
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .ranking-section {
+                max-width: 1000px;
+                gap: 30px;
+                padding: 50px 30px;
+            }
+            .rank-1 .rank-image-container { width: 240px; height: 180px; }
+            .rank-2 .rank-image-container,
+            .rank-3 .rank-image-container { width: 220px; height: 165px; }
+            .rank-image-container:hover { transform: scale(1.15); }
+            .rank-1 .rank-image-container:hover { transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .ranking-section {
+                flex-direction: column;
+                align-items: center;
+                margin: 20px;
+                gap: 40px;
+                padding: 40px 20px;
+            }
+            .rank-item { margin-bottom: 0; }
+            .rank-1 { order: 1; margin-bottom: 0; }
+            .rank-2 { order: 2; }
+            .rank-3 { order: 3; }
+            .rank-1 .rank-image-container { width: 280px; height: 210px; }
+            .rank-2 .rank-image-container,
+            .rank-3 .rank-image-container { width: 250px; height: 188px; }
+            .rank-image-container:hover { transform: scale(1.1); }
+            .rank-1 .rank-image-container:hover { transform: scale(1.15); }
+            .rank-item:hover { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- XÓA div này -->
+    <script src="components/navbar.js"></script>
+    <script>loadNavbar();</script>
+
+    <!-- Ranking Section -->
+    <div class="ranking-section">
+        <!-- ... nội dung ranking ... -->
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h2>Chào mừng đến với LỚP HỌC THẦY PHÚ</h2>
+        <p>Nền tảng học tập và rèn luyện kiến thức hiệu quả</p>
+    </div>
+</body>
+</html>
