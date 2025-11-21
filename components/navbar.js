@@ -214,7 +214,8 @@ function loadNavbar() {
 
     // Nếu nằm trong pages => dùng ../components
     const basePath = inPagesFolder ? '../components' : './components';
-    
+    //const basePath = inPagesFolder ? '../components' : (someCondition ? '/components' : './components');
+
     const cssPath = `${basePath}/navbar.css`;
     const htmlPath = `${basePath}/navbar.html`;
 
