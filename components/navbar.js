@@ -250,6 +250,8 @@ function loadNavbar() {
             console.error('Error loading navbar:', error);
         });
 }
+ 
+
 
 // Hàm fix link
 function fixNavbarLinks(inPagesFolder) {

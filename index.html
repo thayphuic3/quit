@@ -3,18 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thầy Phú IC3</title>
+    <title>Thầy Phú IC3 - Giáng Sinh Vui Vẻ</title>
 
     <meta name="google-site-verification" content="Zxtkc9_SURDH6NmzAi9pEwDVnzMGpKHDYzO03U9fDEM" />
-
-    <!-- 3. THẺ MÔ TẢ (META DESCRIPTION) -->
-    <meta name="description" content="trang luyện làm bài tập cho các em học sinh">
-    <!-- ↑ Hiển thị dưới tiêu đề trong kết quả tìm kiếm -->
-    
-    <!-- 4. TỪ KHÓA (Keywords - Ít quan trọng hơn trước nhưng vẫn nên có) -->
-    <meta name="keywords" content="thầy phú ic3, THẦY PHÚ IC3, học cùng thầy phú">
-    
-    <!-- 5. TÁC GIẢ & BẢN QUYỀN -->
+    <meta name="description" content="Trang luyện làm bài tập và học tập tương tác cho học sinh với chủ đề Giáng Sinh">
+    <meta name="keywords" content="thầy phú ic3, THẦY PHÚ IC3, học cùng thầy phú, trò chơi học tập, đoán từ, giáng sinh">
     <meta name="author" content="thầy phú">
 
     <style>
@@ -25,158 +18,341 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Navigation Bar */
-        /*.navbar {*/
-        /*    display: flex;*/
-        /*    justify-content: space-between;*/
-        /*    align-items: center;*/
-        /*    background: white;*/
-        /*    padding: 15px 40px;*/
-        /*    box-shadow: 0 2px 5px rgba(0,0,0,0.1);*/
-        /*    position: sticky;*/
-        /*    top: 0;*/
-        /*    z-index: 1000;*/
-        /*}*/
-
-        /*.logo {*/
-        /*    font-size: 24px;*/
-        /*    font-weight: bold;*/
-        /*    color: #333;*/
-        /*    display: flex;*/
-        /*    align-items: center;*/
-        /*}*/
-
-        /*.logo-icon {*/
-        /*    font-size: 28px;*/
-        /*    margin-right: 10px;*/
-        /*}*/
-
-        /*.nav-menu {*/
-        /*    display: flex;*/
-        /*    list-style: none;*/
-        /*    gap: 20px;*/
-        /*}*/
-
-        /*.nav-item {*/
-        /*    position: relative;*/
-        /*}*/
-
-        /*.nav-link, .dropdown-toggle {*/
-        /*    text-decoration: none;*/
-        /*    color: #333;*/
-        /*    font-weight: 500;*/
-        /*    padding: 12px 30px;*/
-        /*    border-radius: 5px;*/
-        /*    transition: all 0.3s ease;*/
-        /*    display: flex;*/
-        /*    align-items: center;*/
-        /*    justify-content: center;*/
-        /*    min-width: 140px;*/
-        /*    border: 2px solid transparent;*/
-        /*    background: white;*/
-        /*    font-size: 16px;*/
-        /*}*/
-
-        /*.nav-link:hover, .dropdown-toggle:hover {*/
-        /*    background-color: #007bff;*/
-        /*    color: white;*/
-        /*    border-color: #007bff;*/
-        /*}*/
-
-        /*.dropdown {*/
-        /*    position: relative;*/
-        /*}*/
-
-        /*.dropdown-content {*/
-        /*    display: none;*/
-        /*    position: absolute;*/
-        /*    right: 0;*/
-        /*    background: white;*/
-        /*    min-width: 210px;*/
-        /*    box-shadow: 0 4px 12px rgba(0,0,0,0.1);*/
-        /*    border-radius: 5px;*/
-        /*    overflow: hidden;*/
-        /*    z-index: 1001;*/
-        /*    top: 100%;*/
-            /*margin-top: 0; /* QUAN TRỌNG: Đặt margin-top về 0 */
-            /*padding-top: 5px; /* Tạo khoảng trống ảo */
-        /*}*/
-
-        /* Tạo phần tử giả để kết nối dropdown */
-        /*.dropdown-content::before {*/
-        /*    content: '';*/
-        /*    position: absolute;*/
-        /*    top: -5px;*/
-        /*    left: 0;*/
-        /*    right: 0;*/
-        /*    height: 5px;*/
-        /*    background: transparent;*/
-        /*}*/
-
-        .dropdown-content a {
-            display: block;
-            padding: 12px 20px;
-            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            background-color: #8B0000; /* Nền đỏ Noel */
             color: #333;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f8f9fa;
-            color: #007bff;
-        }
-
-        /* SỬA: Thay đổi cách hiển thị dropdown */
-        .dropdown:hover .dropdown-content,
-        .dropdown-content:hover {
-            display: block;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
+            overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
 
-        .dropdown-toggle::after {
-            content: "▼";
-            font-size: 10px;
-            margin-left: 8px;
+        /* Background pattern Noel */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 30%);
+            z-index: -2;
+            pointer-events: none;
         }
 
-        /* tiêu đề xếp hạng */
-        .ranking-title {
-                font-size: 28px;
-                font-weight: bold;
-                color: black; /* màu nổi bật */
-                text-align: center;
-                padding-bottom: 10px;
-                margin: 0;
-                background-color: yellow;
+        /* Hiệu ứng tuyết rơi */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowfall linear infinite;
+            box-shadow: 0 0 10px white;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 0;
             }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-        /* Ranking Section */
+        /* Cây thông Noel */
+        .christmas-tree {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            width: 150px;
+            height: 250px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .tree-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 120px solid #228B22;
+        }
+
+        .tree-body::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: -35px;
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 100px solid #32CD32;
+        }
+
+        .tree-body::after {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: -30px;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 80px solid #3CB371;
+        }
+
+        .tree-trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 30px;
+            background-color: #8B4513;
+        }
+
+        .tree-ornament {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: gold;
+            box-shadow: 0 0 5px gold;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .tree-star {
+            position: absolute;
+            top: -175px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: gold;
+            font-size: 30px;
+            text-shadow: 0 0 10px gold;
+            animation: starTwinkle 1s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes starTwinkle {
+            0% { opacity: 0.5; transform: translateX(-50%) scale(0.9) rotate(0deg); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.1) rotate(180deg); }
+        }
+
+        /* Đèn nhấp nháy */
+        .christmas-lights {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .light {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: lightBlink 1.5s infinite alternate;
+        }
+
+        .light:nth-child(odd) {
+            background-color: #FFD700;
+            animation-delay: 0s;
+        }
+
+        .light:nth-child(even) {
+            background-color: #32CD32;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes lightBlink {
+            0%, 100% { opacity: 0.3; box-shadow: 0 0 5px currentColor; }
+            50% { opacity: 1; box-shadow: 0 0 15px currentColor; }
+        }
+
+        /* Banner Noel */
+        .christmas-banner {
+            background: linear-gradient(90deg, #8B0000, #B22222, #8B0000);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid gold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .christmas-banner h1 {
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bannerText 3s infinite alternate;
+        }
+
+        .christmas-banner p {
+            font-size: 16px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        @keyframes bannerText {
+            0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            100% { text-shadow: 0 0 10px gold, 0 0 20px gold; }
+        }
+
+        /* Navigation Container - Noel style */
+        #navbar-container {
+            background: linear-gradient(90deg, #006400, #228B22);
+            padding: 15px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid gold;
+        }
+
+        /* TIÊU ĐỀ 3D - CHỦ ĐỀ NOEL */
+        .ranking-title-container {
+            max-width: 1400px;
+            margin: 40px auto 0 auto;
+            padding: 0 40px;
+        }
+
+        .ranking-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            padding: 25px 20px;
+            margin: 0;
+            background: linear-gradient(135deg, #B22222 0%, #8B0000 100%);
+            border-radius: 15px 15px 0 0;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2),
+                         5px 5px 0px rgba(0, 0, 0, 0.1),
+                         7px 7px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+                       inset 0 -5px 15px rgba(255, 255, 255, 0.4),
+                       inset 0 5px 15px rgba(255, 215, 0, 0.6);
+            border: 5px solid gold;
+            border-bottom: none;
+            transform: perspective(500px) rotateX(5deg);
+            transform-origin: bottom;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        /* Hiệu ứng ánh sáng cho tiêu đề Noel */
+        .ranking-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(255, 215, 0, 0.3) 50%, 
+                transparent 70%);
+            z-index: 1;
+            animation: shine 3s infinite linear;
+        }
+
+        /* Hiệu ứng viền 3D Noel */
+        .ranking-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(to bottom, gold, #FFD700);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        /* Hiệu ứng hover cho tiêu đề Noel */
+        .ranking-title:hover {
+            transform: perspective(500px) rotateX(8deg) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3),
+                       inset 0 -5px 15px rgba(255, 255, 255, 0.4),
+                       inset 0 5px 15px rgba(255, 215, 0, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        /* Ranking Section - Noel theme */
         .ranking-section {
             display: flex;
             justify-content: center;
             align-items: flex-end;
             max-width: 1400px;
-
-            /* margin: 40px auto;
-            padding: 60px 40px; */
-
-            margin: 0px auto;
+            margin: 0 auto;
             padding: 40px 40px 60px 40px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             gap: 50px;
+            position: relative;
+            z-index: 1;
+            border: 5px solid gold;
+            border-top: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15),
+                       inset 0 0 20px rgba(255, 215, 0, 0.1);
+            background: linear-gradient(135deg, #FFF8DC, #FFFAF0);
+        }
+
+        /* Phần tử decor cho ranking section Noel */
+        .ranking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                gold, 
+                #B22222, 
+                gold, 
+                transparent);
+            border-radius: 3px;
+            z-index: 2;
         }
 
         .rank-item {
@@ -187,27 +363,14 @@
             flex: 0 1 auto;
             transition: transform 0.4s ease;
         }
-        
 
-        /* Hiệu ứng hover cho toàn bộ item */
         .rank-item:hover {
             transform: translateY(-15px);
         }
 
-        .rank-2 {
-            order: 1;
-            margin-bottom: 0;
-        }
-
-        .rank-1 {
-            order: 2;
-            margin-bottom: 40px;
-        }
-
-        .rank-3 {
-            order: 3;
-            margin-bottom: 0;
-        }
+        .rank-2 { order: 1; margin-bottom: 0; }
+        .rank-1 { order: 2; margin-bottom: 40px; }
+        .rank-3 { order: 3; margin-bottom: 0; }
 
         .rank-image-container {
             border-radius: 15px;
@@ -222,17 +385,18 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            border-color: #B22222;
+            background: linear-gradient(135deg, #FFF8DC, #FFEBCD);
         }
 
-        /* Hiệu ứng hover phóng to MẠNH cho container */
         .rank-image-container:hover {
             transform: scale(1.25);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(178, 34, 34, 0.3);
             z-index: 100;
             border-width: 5px;
+            border-color: gold;
         }
 
-        /* Hiệu ứng đặc biệt cho hạng 1 */
         .rank-1 .rank-image-container:hover {
             transform: scale(1.3);
             box-shadow: 0 25px 50px rgba(255,215,0,0.4);
@@ -242,7 +406,7 @@
             width: 280px;
             height: 210px;
             border-color: gold;
-            background: linear-gradient(135deg, #fff9e6, #fff3cc);
+            background: linear-gradient(135deg, #FFF8DC, #FFD700);
         }
 
         .rank-2 .rank-image-container {
@@ -267,7 +431,6 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Hiệu ứng hover phóng to và nổi bật cho ảnh */
         .rank-image-container:hover .rank-image {
             transform: scale(1.1);
             filter: brightness(1.1) contrast(1.1);
@@ -281,72 +444,282 @@
             border-radius: 25px;
             color: white;
             transition: all 0.4s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        /* Hiệu ứng cho badge khi hover */
         .rank-item:hover .rank-badge {
             transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
-        .rank-1 .rank-badge {
-            background: gold;
+        .rank-1 .rank-badge { 
+            background: linear-gradient(135deg, gold, #FFD700);
             color: #333;
+            border: 2px solid #B22222;
         }
 
-        .rank-2 .rank-badge {
-            background: silver;
+        .rank-2 .rank-badge { 
+            background: linear-gradient(135deg, silver, #C0C0C0);
             color: #333;
+            border: 2px solid #A9A9A9;
         }
 
-        .rank-3 .rank-badge {
-            background: #cd7f32;
+        .rank-3 .rank-badge { 
+            background: linear-gradient(135deg, #cd7f32, #8B4513);
+            color: white;
+            border: 2px solid #8B4513;
+        }
+
+        /* NEW: Interactive Content Section - Noel theme */
+        .interactive-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Word Guessing Game - Noel theme */
+        .game-section {
+            background: linear-gradient(135deg, #FFF8DC, #FFFAF0);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid #B22222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-section::before {
+            content: '🎄';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            animation: rotate 5s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .game-title {
+            color: #8B0000;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #B22222;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .word-display {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .letter-box {
+            width: 50px;
+            height: 60px;
+            border: 2px solid #B22222;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: bold;
+            background-color: #FFF8DC;
+            color: #8B0000;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .letter-box.filled {
+            background: linear-gradient(135deg, #B22222, #8B0000);
+            color: white;
+            border-color: gold;
+        }
+
+        .hint-container {
+            background: linear-gradient(135deg, #FFF8DC, #FFEBCD);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #228B22;
+            border: 2px solid #B22222;
+        }
+
+        .hint-text {
+            font-size: 18px;
+            color: #8B0000;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .game-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .guess-btn {
+            background: linear-gradient(135deg, #228B22, #32CD32);
             color: white;
         }
 
-        .rank-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            transition: all 0.4s ease;
+        .guess-btn:hover {
+            background: linear-gradient(135deg, #32CD32, #228B22);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(34, 139, 34, 0.3);
         }
 
-        /* Hiệu ứng cho tên khi hover */
-        .rank-item:hover .rank-name {
-            transform: scale(1.05);
-            color: #007bff;
+        .hint-btn {
+            background: linear-gradient(135deg, #B22222, #8B0000);
+            color: white;
         }
 
-        .rank-score {
-            color: #666;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.4s ease;
+        .hint-btn:hover {
+            background: linear-gradient(135deg, #8B0000, #B22222);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(178, 34, 34, 0.3);
         }
 
-        /* Hiệu ứng cho điểm số khi hover */
-        .rank-item:hover .rank-score {
-            transform: scale(1.05);
-            color: #ff6b6b;
-            font-weight: bold;
+        .new-word-btn {
+            background: linear-gradient(135deg, gold, #FFD700);
+            color: #333;
         }
 
-        /* Content Section */
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px 20px;
+        .new-word-btn:hover {
+            background: linear-gradient(135deg, #FFD700, gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Motivation Section - Noel theme */
+        .motivation-section {
+            background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+            border-radius: 15px;
+            padding: 40px;
+            color: white;
             text-align: center;
-            font-size: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid gold;
+            position: relative;
+            overflow: hidden;
         }
 
+        .motivation-section::before {
+            content: '❄️';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            opacity: 0.5;
+        }
+
+        .motivation-section::after {
+            content: '🎅';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            opacity: 0.5;
+        }
+
+        .motivation-title {
+            font-size: 32px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: gold;
+        }
+
+        .quote-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 5px solid gold;
+        }
+
+        .daily-quote {
+            font-size: 22px;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            color: #FFF8DC;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            text-align: right;
+            opacity: 0.9;
+            color: #FFD700;
+        }
+
+        .motivation-message {
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #32CD32;
+        }
+
+        .new-quote-btn {
+            background: linear-gradient(135deg, gold, #FFD700);
+            color: #8B0000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .new-quote-btn:hover {
+            background: linear-gradient(135deg, #FFD700, gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive Design */
         @media (max-width: 1024px) {
+            .ranking-title-container,
             .ranking-section {
                 max-width: 1000px;
+                padding: 0 30px;
+            }
+            
+            .ranking-section {
                 gap: 30px;
-                padding: 50px 30px;
-
-                
+                padding: 40px 30px 50px 30px;
             }
 
             .rank-1 .rank-image-container {
@@ -360,45 +733,31 @@
                 height: 165px;
             }
 
-            /* Giảm hiệu ứng hover trên tablet */
-            .rank-image-container:hover {
-                transform: scale(1.15);
+            .christmas-tree {
+                width: 120px;
+                height: 200px;
+                right: 10px;
             }
-
-            .rank-1 .rank-image-container:hover {
-                transform: scale(1.2);
-            }
-
-            
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
+            .interactive-section {
+                padding: 20px;
+                margin: 20px auto;
             }
-
-            .nav-menu {
-                gap: 10px;
-                width: 100%;
-                justify-content: center;
+            
+            .ranking-title-container,
+            .ranking-section {
+                padding: 0 20px;
+                margin: 20px auto;
             }
-
-            .nav-link, .dropdown-toggle {
-                min-width: 120px;
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
+            
             .ranking-section {
                 flex-direction: column;
                 align-items: center;
-                margin: 20px;
                 gap: 40px;
                 padding: 40px 20px;
             }
-
             
             .rank-item {
                 margin-bottom: 0;
@@ -409,13 +768,8 @@
                 margin-bottom: 0;
             }
             
-            .rank-2 {
-                order: 2;
-            }
-            
-            .rank-3 {
-                order: 3;
-            }
+            .rank-2 { order: 2; }
+            .rank-3 { order: 3; }
 
             .rank-1 .rank-image-container {
                 width: 280px;
@@ -428,70 +782,153 @@
                 height: 188px;
             }
 
-            /* Giảm hiệu ứng hover trên mobile */
-            .rank-image-container:hover {
-                transform: scale(1.1);
+            .game-title, .motivation-title {
+                font-size: 24px;
             }
-
-            .rank-1 .rank-image-container:hover {
-                transform: scale(1.15);
-            }
-
-            .rank-item:hover {
-                transform: translateY(-10px);
-            }
-
             
+            .daily-quote {
+                font-size: 18px;
+            }
+            
+            .letter-box {
+                width: 40px;
+                height: 50px;
+                font-size: 22px;
+            }
+            
+            .ranking-title {
+                font-size: 28px;
+                padding: 20px 15px;
+                letter-spacing: 1px;
+            }
+
+            .christmas-tree {
+                display: none; /* Ẩn cây thông trên mobile để tiết kiệm không gian */
+            }
+
+            .christmas-lights {
+                height: 15px;
+            }
+
+            .light {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Button để tắt/mở hiệu ứng Noel */
+        .toggle-christmas-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #B22222, #8B0000);
+            color: white;
+            border: 2px solid gold;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-christmas-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <!--<nav class="navbar">-->
-    <!--    <div class="logo">-->
-    <!--        <span class="logo-icon">🏆</span>-->
-    <!--        Thầy Phú Learning-->
-    <!--    </div>-->
-        
-    <!--    <ul class="nav-menu">-->
-    <!--        <li class="nav-item">-->
-    <!--            <a href="#" class="nav-link">Trang Chủ</a>-->
-    <!--        </li>-->
-    <!--        <li class="nav-item dropdown">-->
-    <!--            <div class="dropdown-toggle">-->
-    <!--                Luyện Bài Tập-->
-    <!--            </div>-->
-    <!--            <div class="dropdown-content">-->
-                  <!--nơi thay đổi danh sách bài tập -->
-    <!--                <a href="page/pagelv1.html">IC3 GS6 Spark Level 1</a>-->
-    <!--                <a href="#">IC3 GS6 Spark Level 2</a>-->
-    <!--                <a href="#">IC3 GS6 Spark Level 3</a>-->
-    <!--            </div>-->
-    <!--        </li>-->
-    <!--    </ul>-->
-    <!--</nav>-->
-    
+    <!-- Hiệu ứng tuyết rơi -->
+    <div id="snow-container"></div>
+
+    <!-- Cây thông Noel -->
+    <div class="christmas-tree">
+        <div class="tree-star">⭐</div>
+        <div class="tree-body"></div>
+        <div class="tree-trunk"></div>
+    </div>
+
+    <!-- Đèn nhấp nháy -->
+    <div class="christmas-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <!-- Banner Noel -->
+    <div class="christmas-banner">
+        <h1>🎄 GIÁNG SINH VUI VẺ 🎄</h1>
+        <p>Chúc các em học sinh một mùa Giáng Sinh ấm áp và học tập thật tốt!</p>
+    </div>
+
     <div id="navbar-container"></div>
     
     <script src="components/navbar.js"></script>
     <script>loadNavbar();</script>
 
-    <!-- Content Section -->
-    <div class="content">
-        <h2>Chào mừng đến với LỚP HỌC THẦY PHÚ</h2>
-        <p>Nền tảng học tập và rèn luyện kiến thức hiệu quả</p>
+    <!-- NEW: Interactive Content Section -->
+    <div class="interactive-section">
+        <!-- Word Guessing Game -->
+        <div class="game-section">
+            <h2 class="game-title">🎄 TRÒ CHƠI ĐOÁN TỪ - GIÁNG SINH 🎄</h2>
+            
+            <div class="game-container">
+                <div class="word-display" id="wordDisplay">
+                    <!-- Letters will be generated by JavaScript -->
+                </div>
+                
+                <div class="hint-container">
+                    <p class="hint-text" id="hintText">🎁 Gợi ý: Đang tải...</p>
+                </div>
+                
+                <div class="game-controls">
+                    <button class="game-btn guess-btn" id="guessBtn">Đoán Từ</button>
+                    <button class="game-btn hint-btn" id="hintBtn">Xem Gợi ý</button>
+                    <button class="game-btn new-word-btn" id="newWordBtn">Từ Mới</button>
+                </div>
+                
+                <input type="text" id="guessInput" placeholder="Nhập từ dự đoán của bạn..." style="padding: 12px; width: 300px; max-width: 90%; border: 2px solid #B22222; border-radius: 8px; font-size: 16px; background: #FFF8DC;">
+                
+                <div class="result-message" id="resultMessage"></div>
+            </div>
+        </div>
+
+        <!-- Motivation Section -->
+        <div class="motivation-section">
+            <h2 class="motivation-title">🎅 LỜI CHÚC GIÁNG SINH 🎅</h2>
+            
+            <div class="quote-container">
+                <p class="daily-quote" id="dailyQuote">"Chúc các em một mùa Giáng Sinh an lành và học tập thật tốt!"</p>
+                <p class="quote-author" id="quoteAuthor">- Thầy Phú</p>
+            </div>
+            
+            <div class="motivation-message">
+                <p>🌟 <strong>Thông điệp Giáng Sinh:</strong> Mùa Giáng Sinh là mùa của yêu thương và chia sẻ. Hãy cùng nhau học tập thật chăm chỉ để đón một năm mới thành công!</p>
+            </div>
+            
+            <button class="new-quote-btn" id="newQuoteBtn">Xem Lời Chúc Mới</button>
+        </div>
     </div>
 
-    
-    <br>
-    <h2 class="ranking-title">BẢNG XẾP HẠNG – LỚP 3</h2>
-    <!-- Ranking Section -->
+    <!-- Bảng xếp hạng với tiêu đề mới -->
+    <div class="ranking-title-container">
+        <h2 class="ranking-title">BẢNG XẾP HẠNG – LỚP 3</h2>
+    </div>
     <div class="ranking-section">
         <!-- Hạng 2 --> 
         <div class="rank-item rank-2">
             <div class="rank-badge">HẠNG 2</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh-->
                 <img src="https://freesvg.org/img/Linux-Avatar.png" alt="Hạng 2" class="rank-image">
             </div>
             <div class="rank-name">CLASS 2</div>
@@ -502,7 +939,6 @@
         <div class="rank-item rank-1">
             <div class="rank-badge">HẠNG 1</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh - THÊM ẢNH TỪ GOOGLE DRIVE VÀO ĐÂY -->
                 <img src="picture/lop32.png" alt="Hạng 1" class="rank-image">
             </div>
             <div class="rank-name">CLASS 1</div>
@@ -513,7 +949,6 @@
         <div class="rank-item rank-3">
             <div class="rank-badge">HẠNG 3</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh-->
                 <img src="https://hinhcute.net/wp-content/uploads/2025/07/anh-avatar-vo-tri.jpg" alt="Hạng 3" class="rank-image">
             </div>
             <div class="rank-name">CLASS 3</div>
@@ -521,15 +956,16 @@
         </div>
     </div>
 
-    <div style="margin: 1cm;" ></div>
-    <h2 class="ranking-title">BẢNG XẾP HẠNG – LỚP 4</h2>
-    <!-- Ranking Section -->
+    <div style="margin: 1cm;"></div>
+    
+    <div class="ranking-title-container">
+        <h2 class="ranking-title">BẢNG XẾP HẠNG – LỚP 4</h2>
+    </div>
     <div class="ranking-section">
         <!-- Hạng 2 --> 
         <div class="rank-item rank-2">
             <div class="rank-badge">HẠNG 2</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh-->
                 <img src="https://via.placeholder.com/250x188/ccc/fff?text=Hạng+2" alt="Hạng 2" class="rank-image">
             </div>
             <div class="rank-name">CLASS 2</div>
@@ -540,7 +976,6 @@
         <div class="rank-item rank-1">
             <div class="rank-badge">HẠNG 1</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh - THÊM ẢNH TỪ GOOGLE DRIVE VÀO ĐÂY -->
                 <img src="https://drive.google.com/uc?export=view&id=1Z-2tuQxe4jnEpkpVUzsX9b2zsmL952mx" alt="Hạng 1" class="rank-image">
             </div>
             <div class="rank-name">CLASS 1</div>
@@ -551,7 +986,6 @@
         <div class="rank-item rank-3">
             <div class="rank-badge">HẠNG 3</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh-->
                 <img src="https://via.placeholder.com/250x188/cd7f32/fff?text=Hạng+3" alt="Hạng 3" class="rank-image">
             </div>
             <div class="rank-name">CLASS 3</div>
@@ -559,15 +993,16 @@
         </div>
     </div>
 
-    <div style="margin: 1cm;" ></div>
-    <h2 class="ranking-title">BẢNG XẾP HẠNG – LỚP 5</h2>
-    <!-- Ranking Section -->
+    <div style="margin: 1cm;"></div>
+    
+    <div class="ranking-title-container">
+        <h2 class="ranking-title">BẢNG XẾP HẠNG – LỚP 5</h2>
+    </div>
     <div class="ranking-section">
         <!-- Hạng 2 --> 
         <div class="rank-item rank-2">
             <div class="rank-badge">HẠNG 2</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh-->
                 <img src="https://via.placeholder.com/250x188/ccc/fff?text=Hạng+2" alt="Hạng 2" class="rank-image">
             </div>
             <div class="rank-name">CLASS 2</div>
@@ -578,40 +1013,366 @@
         <div class="rank-item rank-1">
             <div class="rank-badge">HẠNG 1</div>
             <div class="rank-image-container">
-                <!--thay đổi ảnh - THÊM ẢNH TỪ GOOGLE DRIVE VÀO ĐÂY -->
                 <img src="https://drive.google.com/uc?export=view&id=1Z-2tuQxe4jnEpkpVUzsX9b2zsmL952mx" alt="Hạng 1" class="rank-image">
             </div>
             <div class="rank-name">CLASS 1</div>
             <div class="rank-score">1000 điểm</div>
         </div>
-
     </div>
-    
 
-    
+    <!-- Nút tắt/mở hiệu ứng Noel -->
+    <button class="toggle-christmas-btn" id="toggleChristmasBtn">🎄 Tắt Hiệu Ứng Noel</button>
 
-    <!-- <script>
-        // JavaScript để đảm bảo dropdown hoạt động mượt
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.dropdown');
+    <script>
+        // ========== TẠO HIỆU ỨNG TUYẾT RƠI ==========
+        function createSnowflakes() {
+            const snowContainer = document.getElementById('snow-container');
+            const numberOfSnowflakes = 100;
+
+            for (let i = 0; i < numberOfSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                
+                // Kích thước ngẫu nhiên
+                const size = Math.random() * 10 + 5;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                
+                // Vị trí ngẫu nhiên
+                const startX = Math.random() * 100;
+                snowflake.style.left = `${startX}vw`;
+                
+                // Tốc độ rơi ngẫu nhiên
+                const duration = Math.random() * 10 + 10;
+                snowflake.style.animationDuration = `${duration}s`;
+                
+                // Độ trễ bắt đầu ngẫu nhiên
+                const delay = Math.random() * 5;
+                snowflake.style.animationDelay = `${delay}s`;
+                
+                // Độ mờ ngẫu nhiên
+                snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                snowContainer.appendChild(snowflake);
+            }
+        }
+
+        // ========== TẠO ĐỒ TRANG TRÍ TRÊN CÂY THÔNG ==========
+        function createTreeOrnaments() {
+            const treeBody = document.querySelector('.tree-body');
+            const numberOfOrnaments = 15;
+
+            for (let i = 0; i < numberOfOrnaments; i++) {
+                const ornament = document.createElement('div');
+                ornament.classList.add('tree-ornament');
+                
+                // Vị trí ngẫu nhiên trên cây thông
+                const positions = [
+                    {top: '40%', left: '30%'},
+                    {top: '30%', left: '60%'},
+                    {top: '50%', left: '50%'},
+                    {top: '60%', left: '20%'},
+                    {top: '20%', left: '40%'},
+                    {top: '70%', left: '70%'},
+                    {top: '25%', left: '70%'},
+                    {top: '45%', left: '80%'},
+                    {top: '65%', left: '40%'},
+                    {top: '55%', left: '60%'},
+                ];
+                
+                const pos = positions[i % positions.length];
+                ornament.style.top = pos.top;
+                ornament.style.left = pos.left;
+                
+                // Màu sắc ngẫu nhiên
+                const colors = ['gold', '#FF0000', '#32CD32', '#1E90FF'];
+                ornament.style.backgroundColor = colors[i % colors.length];
+                
+                // Kích thước ngẫu nhiên
+                const size = Math.random() * 5 + 5;
+                ornament.style.width = `${size}px`;
+                ornament.style.height = `${size}px`;
+                
+                // Độ trễ animation ngẫu nhiên
+                ornament.style.animationDelay = `${Math.random() * 2}s`;
+                
+                treeBody.appendChild(ornament);
+            }
+        }
+
+        // ========== TOGGLE HIỆU ỨNG NOEL ==========
+        function toggleChristmasEffects() {
+            const body = document.body;
+            const snowContainer = document.getElementById('snow-container');
+            const tree = document.querySelector('.christmas-tree');
+            const lights = document.querySelector('.christmas-lights');
+            const banner = document.querySelector('.christmas-banner');
+            const toggleBtn = document.getElementById('toggleChristmasBtn');
             
-            dropdowns.forEach(dropdown => {
-                const toggle = dropdown.querySelector('.dropdown-toggle');
-                const content = dropdown.querySelector('.dropdown-content');
+            if (body.classList.contains('christmas-disabled')) {
+                // Bật hiệu ứng Noel
+                body.classList.remove('christmas-disabled');
+                snowContainer.style.display = 'block';
+                tree.style.display = 'block';
+                lights.style.display = 'flex';
+                banner.style.display = 'block';
+                toggleBtn.textContent = '🎄 Tắt Hiệu Ứng Noel';
                 
-                // Giữ dropdown mở khi hover cả toggle và content
-                dropdown.addEventListener('mouseenter', function() {
-                    content.style.display = 'block';
-                });
+                // Đổi màu nền về Noel
+                body.style.backgroundColor = '#8B0000';
+            } else {
+                // Tắt hiệu ứng Noel
+                body.classList.add('christmas-disabled');
+                snowContainer.style.display = 'none';
+                tree.style.display = 'none';
+                lights.style.display = 'none';
+                banner.style.display = 'none';
+                toggleBtn.textContent = '🎄 Bật Hiệu Ứng Noel';
                 
-                dropdown.addEventListener('mouseleave', function() {
-                    // Thêm độ trễ nhỏ để tránh đóng quá nhanh
+                // Đổi màu nền về bình thường
+                body.style.backgroundColor = '#f5f5f5';
+            }
+        }
+
+        // ========== TRÒ CHƠI ĐOÁN TỪ GIÁNG SINH ==========
+        const wordList = [
+            {
+                word: "GIÁNG SINH",
+                hint: "Ngày lễ lớn vào tháng 12"
+            },
+            {
+                word: "ÔNG GIÀ NOEL",
+                hint: "Người tặng quà cho trẻ em ngoan"
+            },
+            {
+                word: "CÂY THÔNG",
+                hint: "Cây được trang trí trong dịp lễ"
+            },
+            {
+                word: "TUYẾT TRẮNG",
+                hint: "Thời tiết đặc trưng của mùa đông"
+            },
+            {
+                word: "QUÀ TẶNG",
+                hint: "Thứ được trao cho nhau trong dịp lễ"
+            },
+            {
+                word: "HỌC TẬP",
+                hint: "Hoạt động chính của học sinh"
+            },
+            {
+                word: "THẦY PHÚ",
+                hint: "Người dạy các em học sinh"
+            },
+            {
+                word: "THI ĐUA",
+                hint: "Hoạt động cạnh tranh lành mạnh"
+            },
+            {
+                word: "THÀNH TÍCH",
+                hint: "Kết quả đạt được sau quá trình học tập"
+            },
+            {
+                word: "NĂM MỚI",
+                hint: "Thời điểm bắt đầu một năm mới"
+            }
+        ];
+
+        // Quotes Giáng Sinh
+        const quotes = [
+            {
+                quote: "Chúc các em một mùa Giáng Sinh an lành và học tập thật tốt!",
+                author: "Thầy Phú"
+            },
+            {
+                quote: "Giáng Sinh là mùa của yêu thương và chia sẻ. Hãy yêu thương nhau và cùng nhau học tập!",
+                author: "Thầy Phú"
+            },
+            {
+                quote: "Ước gì mỗi ngày đến trường đều vui như ngày Giáng Sinh!",
+                author: "Thầy Phú"
+            },
+            {
+                quote: "Học tập chăm chỉ là món quà ý nghĩa nhất cho tương lai của chính mình!",
+                author: "Thầy Phú"
+            },
+            {
+                quote: "Mùa Giáng Sinh này, hãy cùng nhau cố gắng học tập để đạt kết quả tốt nhất!",
+                author: "Thầy Phú"
+            }
+        ];
+
+        // Game Variables
+        let currentWordIndex = 0;
+        let maxGuesses = 3;
+        let remainingGuesses = maxGuesses;
+        let score = 0;
+
+        // DOM Elements
+        const wordDisplay = document.getElementById('wordDisplay');
+        const hintText = document.getElementById('hintText');
+        const guessBtn = document.getElementById('guessBtn');
+        const hintBtn = document.getElementById('hintBtn');
+        const newWordBtn = document.getElementById('newWordBtn');
+        const guessInput = document.getElementById('guessInput');
+        const resultMessage = document.getElementById('resultMessage');
+        const dailyQuote = document.getElementById('dailyQuote');
+        const quoteAuthor = document.getElementById('quoteAuthor');
+        const newQuoteBtn = document.getElementById('newQuoteBtn');
+        const toggleChristmasBtn = document.getElementById('toggleChristmasBtn');
+
+        // Initialize the game
+        function initGame() {
+            currentWordIndex = Math.floor(Math.random() * wordList.length);
+            const currentWord = wordList[currentWordIndex];
+            
+            displayWord(currentWord.word);
+            hintText.textContent = `🎁 Gợi ý: ${currentWord.hint}`;
+            
+            remainingGuesses = maxGuesses;
+            resultMessage.style.display = 'none';
+            guessInput.value = '';
+            guessInput.focus();
+        }
+
+        function displayWord(word) {
+            wordDisplay.innerHTML = '';
+            
+            for (let i = 0; i < word.length; i++) {
+                const letterBox = document.createElement('div');
+                letterBox.className = 'letter-box';
+                
+                if (word[i] === ' ') {
+                    letterBox.classList.add('filled');
+                    letterBox.textContent = '';
+                } else {
+                    if (i === 0 || i === word.length - 1) {
+                        letterBox.classList.add('filled');
+                        letterBox.textContent = word[i];
+                    } else {
+                        letterBox.textContent = '_';
+                    }
+                }
+                
+                wordDisplay.appendChild(letterBox);
+            }
+        }
+
+        function checkGuess() {
+            const guess = guessInput.value.toUpperCase().trim();
+            const currentWord = wordList[currentWordIndex].word;
+            
+            if (!guess) {
+                showResult('🎅 Vui lòng nhập từ dự đoán!', 'error');
+                return;
+            }
+            
+            if (guess === currentWord) {
+                score += 10;
+                showResult(`🎄 Chính xác! Bạn đã đoán đúng từ "${currentWord}". Bạn được +10 điểm! Tổng điểm: ${score}`, 'success');
+                
+                const letterBoxes = wordDisplay.querySelectorAll('.letter-box');
+                for (let i = 0; i < currentWord.length; i++) {
+                    letterBoxes[i].textContent = currentWord[i];
+                    letterBoxes[i].classList.add('filled');
+                }
+                
+                guessBtn.disabled = true;
+                setTimeout(() => {
+                    guessBtn.disabled = false;
+                }, 2000);
+            } else {
+                remainingGuesses--;
+                
+                if (remainingGuesses > 0) {
+                    showResult(`❌ Sai rồi! Từ đúng phải có ${currentWord.length} chữ cái. Bạn còn ${remainingGuesses} lần thử.`, 'error');
+                } else {
+                    showResult(`💔 Hết lượt đoán rồi! Từ đúng là: "${currentWord}". Thử lại với từ mới nhé!`, 'error');
+                    guessBtn.disabled = true;
+                    
+                    const letterBoxes = wordDisplay.querySelectorAll('.letter-box');
+                    for (let i = 0; i < currentWord.length; i++) {
+                        letterBoxes[i].textContent = currentWord[i];
+                        letterBoxes[i].classList.add('filled');
+                    }
+                    
                     setTimeout(() => {
-                        content.style.display = 'none';
-                    }, 100);
-                });
+                        guessBtn.disabled = false;
+                    }, 2000);
+                }
+            }
+            
+            guessInput.value = '';
+            guessInput.focus();
+        }
+
+        function showResult(message, type) {
+            resultMessage.textContent = message;
+            resultMessage.className = `result-message ${type}`;
+            resultMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                resultMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function showHint() {
+            const currentWord = wordList[currentWordIndex].word;
+            const letterBoxes = wordDisplay.querySelectorAll('.letter-box');
+            const hiddenIndices = [];
+            
+            for (let i = 1; i < letterBoxes.length - 1; i++) {
+                if (!letterBoxes[i].classList.contains('filled') && currentWord[i] !== ' ') {
+                    hiddenIndices.push(i);
+                }
+            }
+            
+            if (hiddenIndices.length > 0) {
+                const randomIndex = hiddenIndices[Math.floor(Math.random() * hiddenIndices.length)];
+                letterBoxes[randomIndex].textContent = currentWord[randomIndex];
+                letterBoxes[randomIndex].classList.add('filled');
+                
+                showResult(`🎁 Đã tiết lộ thêm một chữ cái cho bạn!`, 'success');
+            } else {
+                showResult(`🎁 Tất cả chữ cái đã được hiển thị!`, 'success');
+            }
+        }
+
+        function getNewQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            dailyQuote.textContent = `"${quotes[randomIndex].quote}"`;
+            quoteAuthor.textContent = `- ${quotes[randomIndex].author}`;
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tạo hiệu ứng tuyết rơi
+            createSnowflakes();
+            
+            // Tạo đồ trang trí cây thông
+            createTreeOrnaments();
+            
+            // Khởi tạo trò chơi
+            initGame();
+            getNewQuote();
+            
+            // Event listeners
+            guessBtn.addEventListener('click', checkGuess);
+            hintBtn.addEventListener('click', showHint);
+            newWordBtn.addEventListener('click', () => {
+                initGame();
+                showResult('🎲 Từ mới đã được chọn! Hãy thử đoán xem!', 'success');
             });
+            newQuoteBtn.addEventListener('click', getNewQuote);
+            toggleChristmasBtn.addEventListener('click', toggleChristmasEffects);
+            
+            guessInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') checkGuess();
+            });
+            
+            // Hiển thị thông báo ban đầu
+            showResult(`🎄 Chào mừng đến với trò chơi đoán từ Giáng Sinh! Bắt đầu với 0 điểm. Hãy đoán từ đầu tiên!`, 'success');
         });
-    </script> -->
+    </script>
 </body>
 </html>
