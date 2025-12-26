@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Thi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-light: #e6ebff;
+            --success-color: #06d6a0;
+            --warning-color: #ffd166;
+            --danger-color: #ef476f;
+            --neutral-color: #8d99ae;
+            --bg-color: #f8f9fa;
+            --card-color: #ffffff;
+            --text-primary: #2b2d42;
+            --text-secondary: #6c757d;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: var(--card-color);
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .user-name {
+            font-weight: 500;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .user-name {
+                display: block;
+            }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .dashboard-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Exam Cards Grid */
+        .exams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .exams-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Exam Card */
+        .exam-card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .exam-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .exam-subject {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-icon {
+            color: var(--primary-color);
+        }
+
+        .exam-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .detail-icon {
+            color: var(--neutral-color);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-not-started {
+            background-color: rgba(6, 214, 160, 0.15);
+            color: var(--success-color);
+        }
+
+        .status-in-progress {
+            background-color: rgba(255, 209, 102, 0.15);
+            color: #d4a000;
+        }
+
+        .status-completed {
+            background-color: rgba(239, 71, 111, 0.15);
+            color: var(--danger-color);
+        }
+
+        .status-expired {
+            background-color: rgba(141, 153, 174, 0.15);
+            color: var(--neutral-color);
+        }
+
+        /* Action Button */
+        .action-button {
+            margin-top: auto;
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-start {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-start:hover {
+            background-color: #3a56d4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-continue {
+            background-color: var(--warning-color);
+            color: #333;
+        }
+
+        .btn-continue:hover {
+            background-color: #f5c450;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 209, 102, 0.3);
+        }
+
+        .btn-view-result {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-view-result:hover {
+            background-color: #e0355f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 71, 111, 0.3);
+        }
+
+        .btn-disabled {
+            background-color: #e9ecef;
+            color: var(--text-secondary);
+            cursor: not-allowed;
+        }
+
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eaeaea;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal for Exam Start Confirmation */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body {
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .modal-btn-cancel {
+            background-color: #f1f3f5;
+            color: var(--text-secondary);
+        }
+
+        .modal-btn-cancel:hover {
+            background-color: #e9ecef;
+        }
+
+        .modal-btn-confirm {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .modal-btn-confirm:hover {
+            background-color: #3a56d4;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            color: var(--neutral-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <script src="../components/navbar.js"></script>
+    <script>loadNavbar();</script>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Available Exams</h1>
+            <p class="dashboard-subtitle">Select an exam to start or continue your assessment</p>
+        </div>
+
+        <!-- Exams Grid -->
+        <div id="exams-container" class="exams-grid">
+            <!-- Exam cards will be dynamically generated here -->
+        </div>
+
+        <!-- Empty State (hidden by default) -->
+        <div id="empty-state" class="empty-state hidden">
+            <div class="empty-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h2 class="empty-title">No Exams Available</h2>
+            <p class="empty-text">There are currently no exams assigned to you. Please check back later or contact your instructor.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2023 EduExam - Online Examination System. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for Exam Start Confirmation -->
+    <div id="exam-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-exam-title">Start Exam</h2>
+                <p id="modal-exam-subject"></p>
+            </div>
+            <div class="modal-body">
+                <div class="detail-item">
+                    <i class="fas fa-clock detail-icon"></i>
+                    <span id="modal-exam-duration"></span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-question-circle detail-icon"></i>
+                    <span id="modal-exam-questions"></span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt detail-icon"></i>
+                    <span id="modal-exam-deadline"></span>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f8f9fa; border-radius: 8px;">
+                    <p><strong>Instructions:</strong></p>
+                    <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>You cannot pause the exam once started</li>
+                        <li>Make sure you have a stable internet connection</li>
+                        <li>All questions must be answered before the time expires</li>
+                        <li>Do not refresh the page during the exam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="modal-cancel" class="modal-btn modal-btn-cancel">Cancel</button>
+                <a id="modal-start-link" href="#" class="modal-btn modal-btn-confirm">Start Exam</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock exam data
+        const examsData = [
+            {
+                id: 1,
+                title: "Midterm Mathematics Assessment",
+                subject: "Mathematics",
+                duration: 90,
+                deadline: "2023-11-30",
+                questions: 25,
+                status: "not-started",
+                description: "Covers chapters 1-5: Algebra, Functions, and Trigonometry"
+            },
+            {
+                id: 2,
+                title: "History Final Examination",
+                subject: "History",
+                duration: 120,
+                deadline: "2023-12-05",
+                questions: 40,
+                status: "in-progress",
+                description: "World History from Ancient Civilizations to Renaissance"
+            },
+            {
+                id: 3,
+                title: "Chemistry Lab Safety Quiz",
+                subject: "Chemistry",
+                duration: 30,
+                deadline: "2023-11-20",
+                questions: 15,
+                status: "completed",
+                description: "Basic lab safety procedures and chemical handling"
+            },
+            {
+                id: 4,
+                title: "English Literature Analysis",
+                subject: "English",
+                duration: 60,
+                deadline: "2023-11-15",
+                questions: 20,
+                status: "expired",
+                description: "Analysis of Shakespeare's sonnets and plays"
+            },
+            {
+                id: 5,
+                title: "Computer Science Fundamentals",
+                subject: "Computer Science",
+                duration: 75,
+                deadline: "2023-12-10",
+                questions: 30,
+                status: "not-started",
+                description: "Programming basics, algorithms, and data structures"
+            },
+            {
+                id: 6,
+                title: "Biology Cell Structure Test",
+                subject: "Biology",
+                duration: 45,
+                deadline: "2023-12-03",
+                questions: 20,
+                status: "not-started",
+                description: "Cell organelles, functions, and cellular processes"
+            }
+        ];
+
+        // Status configurations
+        const statusConfig = {
+            'not-started': {
+                label: 'Not Started',
+                badgeClass: 'status-not-started',
+                buttonText: 'Start Exam',
+                buttonClass: 'btn-start',
+                icon: 'fas fa-play-circle'
+            },
+            'in-progress': {
+                label: 'In Progress',
+                badgeClass: 'status-in-progress',
+                buttonText: 'Continue',
+                buttonClass: 'btn-continue',
+                icon: 'fas fa-sync-alt'
+            },
+            'completed': {
+                label: 'Completed',
+                badgeClass: 'status-completed',
+                buttonText: 'View Result',
+                buttonClass: 'btn-view-result',
+                icon: 'fas fa-chart-line'
+            },
+            'expired': {
+                label: 'Expired',
+                badgeClass: 'status-expired',
+                buttonText: 'Expired',
+                buttonClass: 'btn-disabled',
+                icon: 'fas fa-ban'
+            }
+        };
+
+        // DOM elements
+        const examsContainer = document.getElementById('exams-container');
+        const emptyState = document.getElementById('empty-state');
+        const examModal = document.getElementById('exam-modal');
+        const modalCancelBtn = document.getElementById('modal-cancel');
+        const modalStartLink = document.getElementById('modal-start-link');
+
+        // Format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Get button action based on status
+        function getButtonAction(exam) {
+            const config = statusConfig[exam.status];
+            
+            if (exam.status === 'expired') {
+                return `<button class="action-button ${config.buttonClass}" disabled>
+                            <i class="${config.icon}"></i> ${config.buttonText}
+                        </button>`;
+            }
+            
+            if (exam.status === 'completed') {
+                return `<button class="action-button ${config.buttonClass}" onclick="viewResults(${exam.id})">
+                            <i class="${config.icon}"></i> ${config.buttonText}
+                        </button>`;
+            }
+            
+            return `<button class="action-button ${config.buttonClass}" onclick="startExam(${exam.id})">
+                        <i class="${config.icon}"></i> ${config.buttonText}
+                    </button>`;
+        }
+
+        // Render exam cards
+        function renderExams() {
+            examsContainer.innerHTML = '';
+            
+            if (examsData.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            
+            examsData.forEach(exam => {
+                const config = statusConfig[exam.status];
+                
+                const examCard = document.createElement('div');
+                examCard.className = 'exam-card';
+                examCard.innerHTML = `
+                    <div class="exam-header">
+                        <div>
+                            <h3 class="exam-title">${exam.title}</h3>
+                            <div class="exam-subject">
+                                <i class="fas fa-book-open subject-icon"></i>
+                                ${exam.subject}
+                            </div>
+                        </div>
+                        <div class="status-badge ${config.badgeClass}">${config.label}</div>
+                    </div>
+                    
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        ${exam.description}
+                    </p>
+                    
+                    <div class="exam-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock detail-icon"></i>
+                            <span>${exam.duration} minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-question-circle detail-icon"></i>
+                            <span>${exam.questions} questions</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt detail-icon"></i>
+                            <span>Due: ${formatDate(exam.deadline)}</span>
+                        </div>
+                    </div>
+                    
+                    ${getButtonAction(exam)}
+                `;
+                
+                examsContainer.appendChild(examCard);
+            });
+        }
+
+        // Start exam function
+        function startExam(examId) {
+            const exam = examsData.find(e => e.id === examId);
+            if (!exam) return;
+            
+            // Update modal content
+            document.getElementById('modal-exam-title').textContent = exam.title;
+            document.getElementById('modal-exam-subject').textContent = exam.subject;
+            document.getElementById('modal-exam-duration').textContent = `Duration: ${exam.duration} minutes`;
+            document.getElementById('modal-exam-questions').textContent = `Questions: ${exam.questions}`;
+            document.getElementById('modal-exam-deadline').textContent = `Deadline: ${formatDate(exam.deadline)}`;
+            
+            // Set up the start link (placeholder URL for demo)
+            modalStartLink.href = `exam.html?id=${exam.id}`;
+            
+            // Show modal
+            examModal.classList.add('active');
+            
+            // If exam is not started, update status to in-progress
+            if (exam.status === 'not-started') {
+                exam.status = 'in-progress';
+                
+                // In a real app, you would save this to backend
+                setTimeout(() => {
+                    renderExams();
+                }, 100);
+            }
+        }
+
+        // View results function
+        function viewResults(examId) {
+            alert(`Viewing results for exam #${examId}. In a real application, this would navigate to the results page.`);
+            // In a real app: window.location.href = `results.html?id=${examId}`;
+        }
+
+        // Close modal function
+        function closeModal() {
+            examModal.classList.remove('active');
+        }
+
+        // Event listeners
+        modalCancelBtn.addEventListener('click', closeModal);
+        examModal.addEventListener('click', function(e) {
+            if (e.target === examModal) {
+                closeModal();
+            }
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderExams();
+            
+            // Add click event to user profile
+            document.querySelector('.user-profile').addEventListener('click', function() {
+                alert('User profile menu would open here');
+            });
+            
+            // Keyboard support for modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && examModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
