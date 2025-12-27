@@ -208,7 +208,7 @@
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
             padding: 20px;
         }
 
@@ -223,7 +223,7 @@
             max-width: 1200px;
             max-height: 90vh;
             position: relative;
-            animation: modalAppear 0.5s ease-out;
+            animation: modalAppear 0.2s ease-out;
         }
 
         @keyframes modalAppear {
@@ -543,8 +543,17 @@
 </head>
 <body>
     <!-- Header -->
-    <script src="../components/navbar.js"></script>
-    <script>loadNavbar();</script>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">📚 Danh Sách Bài Tập</h1>
+                <div class="user-info">
+                    <div class="user-avatar">HS</div>
+                    <div class="user-name">Học Sinh Chăm Chỉ</div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Exam Type Selector - ĐÃ SỬA -->
     <div class="container">
@@ -553,9 +562,11 @@
                 <button class="exam-type-btn active" id="practice-btn">
                     📝 ĐỀ THI CẦN LUYỆN
                 </button>
-                
+                <button class="exam-type-btn" id="all-tests-btn">
+                    📚 TẤT CẢ ĐỀ THI
+                </button>
             </div>
-            <a href="https://ic3.gemsenglish.edu.vn/" target="_blank" class="real-exam-btn">
+            <a href="https://ic3.gems.edu.vn/" target="_blank" class="real-exam-btn">
                 🎯 Vào thi thật
             </a>
         </div>
@@ -565,8 +576,8 @@
     <main class="main-content">
         <div class="container">
             <div class="content-header">
-                <h2 class="welcome-message">Chúc các em vượt vũ môn thành công 😊!</h2>
-                <p class="subtitle">Hãy chọn bài tập để BẮT ĐẦU học tập ngay hôm nay</p>
+                <h2 class="welcome-message">Chào mừng bạn trở lại!</h2>
+                <p class="subtitle">Hãy chọn bài tập để bắt đầu học tập ngay hôm nay</p>
             </div>
 
             <!-- Assignments list -->
@@ -574,7 +585,7 @@
                 <!-- Bài tập 1 -->
                 <div class="assignment-card">
                     <div class="assignment-header">
-                        <h3 class="assignment-title">ĐỀ THI 1</h3>
+                        <h3 class="assignment-title">Phép Cộng Có Nhớ</h3>
                         <span class="assignment-status">Mới</span>
                     </div>
                     <p class="assignment-description">
@@ -594,28 +605,11 @@
                 </div>
 
                 <!-- Bài tập 2 -->
-                <div class="assignment-card">
-                    <div class="assignment-header">
-                        <h3 class="assignment-title">ĐỀ THI 2</h3>
-                        <span class="assignment-status">Mới</span>
-                    </div>
-                    <p class="assignment-description">
-                        Luyện tập các bài toán cộng có nhớ trong phạm vi 100. 
-                        Bài tập giúp rèn luyện kỹ năng tính toán nhanh và chính xác.
-                    </p>
-                    <div class="assignment-footer">
-                        <div class="assignment-info">
-                            <div class="info-item">⏱️ 35 phút</div>
-                            <div class="info-item">❓ 30 câu hỏi</div>
-                            <div class="info-item">🎯 Nâng cao</div>
-                        </div>
-                        <button class="start-button" >
-                            ▶️ Bắt đầu
-                        </button>
-                    </div>
-                </div>
+                
 
                 <!-- Bài tập 3 -->
+                
+
             </div>
         </div>
     </main>
@@ -690,7 +684,7 @@
             if (showModal === 'true') {
                 setTimeout(() => {
                     showModalOverlay();
-                }, 300);
+                }, 0);
             }
         }
         
@@ -858,7 +852,7 @@
                 // Thử ảnh tiếp theo
                 setTimeout(() => {
                     loadRandomImageFromFolder();
-                }, 1000);
+                }, 200);
             };
             
             // Bắt đầu tải
