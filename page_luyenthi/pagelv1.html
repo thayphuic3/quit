@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Bài Tập</title>
+    <style>
+        /* ... (giữ nguyên phần CSS hiện tại) ... */
+        /* Reset và cấu hình cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        /* .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        } */
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Main content */
+        .main-content {
+            padding: 1rem 0 3rem;
+        }
+
+        .content-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .welcome-message {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Assignment cards */
+        .assignments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .assignment-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .assignment-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #4f46e5;
+        }
+
+        .assignment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .assignment-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            flex: 1;
+        }
+
+        .assignment-status {
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .assignment-description {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .assignment-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .assignment-info {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .start-button:hover {
+            background: linear-gradient(135deg, #4338ca, #6d28d9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .start-button:active {
+            transform: translateY(0);
+        }
+
+        /* Modal overlay - CHỈ CÓ ẢNH */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal content - CHỈ CÓ ẢNH */
+        .modal-content {
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            position: relative;
+            animation: modalAppear 0.2s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* TITLE CHO ẢNH - THÊM MỚI */
+        .image-title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            z-index: 1002;
+            max-width: 80%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ẢNH CHÍNH CHIẾM TOÀN BỘ MODAL */
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            background: #000;
+        }
+
+        /* Nút đóng */
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1001;
+        }
+
+        .close-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .close-button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+        }
+
+        /* Image navigation (nếu có nhiều ảnh) */
+        .image-navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 1001;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 1.2rem;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .assignment-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .assignment-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .assignment-info {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .start-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .modal-image {
+                max-height: 85vh;
+            }
+
+            .close-button {
+                top: 10px;
+                right: 10px;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .image-title {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: calc(100% - 20px);
+                font-size: 1rem;
+                padding: 8px 15px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+            }
+
+            .welcome-message {
+                font-size: 1.5rem;
+            }
+
+            .assignment-title {
+                font-size: 1.3rem;
+            }
+
+            .modal-overlay {
+                padding: 10px;
+            }
+
+            .close-button {
+                top: 5px;
+                right: 5px;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .image-title {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Loading state cho ảnh */
+        .image-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            width: 100%;
+            height: 70vh;
+            border-radius: 8px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #4f46e5;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+
+        /* THÊM CLASS CHO STATUS MESSAGE */
+        .status {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            z-index: 1002;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Hiệu ứng fade in cho ảnh */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Exam Type Selector - CẬP NHẬT */
+        .exam-type-selector {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exam-type-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .exam-type-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+            background-color: white;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exam-type-btn.active {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+            border-color: #4f46e5;
+        }
+
+        .exam-type-btn:hover:not(.active) {
+            background-color: #f9fafb;
+            color: #4b5563;
+        }
+
+        .real-exam-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .real-exam-btn:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .real-exam-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .exam-type-selector {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .exam-type-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .real-exam-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header với script BÊN TRONG -->
+    <header class="header">
+        <!-- SCRIPT HEADER CỦA BẠN Ở ĐÂY -->
+        <script src="../components/navbar.js"></script>
+        <script>
+        // Load navbar nhưng với timeout để tránh conflict
+        setTimeout(function() {
+            if (typeof loadNavbar === 'function') {
+                try {
+                    loadNavbar();
+                    console.log('✅ Navbar loaded successfully');
+                } catch (error) {
+                    console.warn('⚠️ Navbar load error:', error.message);
+                }
+            }
+        }, 100);
+        </script>
+        
+    </header>
+
+    <!-- Exam Type Selector - ĐÃ SỬA -->
+    <div class="container">
+        <div class="exam-type-selector">
+            <div class="exam-type-buttons">
+                <button class="exam-type-btn active" id="practice-btn">
+                    📝 ĐỀ THI CẦN LUYỆN
+                </button>
+            </div>
+            <a href="https://ic3.gemsenglish.edu.vn/login" target="_blank" class="real-exam-btn">
+                🎯 Vào thi thật
+            </a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-header">
+                <h2 class="welcome-message">Chúc các em vượt vũ môn thành công 😊!</h2>
+                <p class="subtitle">Hãy chọn BÀI THI để bắt đầu học tập ngay hôm nay</p>
+            </div>
+
+            <!-- Assignments list -->
+            <div class="assignments-list">
+                <!-- Bài tập 1 -->
+                <div class="assignment-card">
+                    <div class="assignment-header">
+                        <h3 class="assignment-title">Phép Cộng Có Nhớ</h3>
+                        <span class="assignment-status">Mới</span>
+                    </div>
+                    <p class="assignment-description">
+                        Luyện tập các bài toán cộng có nhớ trong phạm vi 100. 
+                        Bài tập giúp rèn luyện kỹ năng tính toán nhanh và chính xác.
+                    </p>
+                    <div class="assignment-footer">
+                        <div class="assignment-info">
+                            <div class="info-item">⏱️ 35 phút</div>
+                            <div class="info-item">❓ 30 câu hỏi</div>
+                            <div class="info-item">🎯 Nâng cao</div>
+                        </div>
+                        <!-- SỬA: THÊM onclick HOẶC id -->
+                        <button class="start-button" id="startAssignmentBtn">
+                            ▶️ Bắt đầu
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bài tập 2 -->
+                
+
+                <!-- Bài tập 3 -->
+                
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Hệ Thống Học Tập Trực Tuyến. Tất cả quyền được bảo lưu.</p>
+            <p style="margin-top: 0.5rem;">Học tập hôm nay, thành công ngày mai! 🌟</p>
+        </div>
+    </footer>
+
+    <!-- Modal Overlay - CHỈ CÓ ẢNH -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <!-- TITLE CHO ẢNH - THÊM MỚI -->
+            <div id="imageTitle" class="image-title">
+                🏆 Phần thưởng cho bạn!
+            </div>
+            
+            <!-- Nút đóng -->
+            <button id="closeModalButton" class="close-button">
+                ✕ Đóng
+            </button>
+            
+            <!-- ẢNH DUY NHẤT CHIẾM TOÀN BỘ MODAL -->
+            <img id="modalImage" 
+                 alt="Random Image - Phần thưởng sau khi hoàn thành bài tập" 
+                 class="modal-image"
+                 onload="hideLoading()"
+                 onerror="handleImageError()">
+            
+            <!-- Status message -->
+            <div id="status" class="status">Đang tải ảnh...</div>
+            
+            <!-- Loading state -->
+            <div id="imageLoading" class="image-loading">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <!-- Image navigation (có thể bật nếu muốn xem nhiều ảnh) -->
+            <div class="image-navigation" style="display: none;">
+                <button class="nav-button" onclick="previousImage()">←</button>
+                <span style="color: white; padding: 0 1rem; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 5px 15px;">
+                    Ảnh <span id="currentImageIndex">1</span>/<span id="totalImages">1</span>
+                </span>
+                <button class="nav-button" onclick="nextImage()">→</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== BIẾN TOÀN CỤC ==========
+        // BAO BỌC TOÀN BỘ CODE trong IIFE để tránh conflict với navbar.js
+        (function() {
+            'use strict';
+            
+            console.log('=== APP INITIALIZING ===');
+            
+            const modalOverlay = document.getElementById('modalOverlay');
+            const closeModalButton = document.getElementById('closeModalButton');
+            const modalImage = document.getElementById('modalImage');
+            const imageLoading = document.getElementById('imageLoading');
+            const statusElement = document.getElementById('status');
+            const imageTitle = document.getElementById('imageTitle'); // THÊM BIẾN MỚI
+            const practiceBtn = document.getElementById('practice-btn');
+            const allTestsBtn = document.getElementById('all-tests-btn');
+            const startAssignmentBtn = document.getElementById('startAssignmentBtn');
+            
+            // THƯ MỤC CHỨA ẢNH - THAY ĐỔI NẾU CẦN
+            const IMAGE_FOLDER = '../images/';
+            
+            // DANH SÁCH TITLE CHO CÁC ẢNH - CÓ THỂ TÙY CHỈNH
+            const IMAGE_TITLES = [
+                "🎁 Hoàn thành một bài tập được xem một Khoảnh Khắc",
+            ];
+            
+            // Biến lưu danh sách ảnh tìm được
+            let foundImages = [];
+            
+            // ========== HÀM XỬ LÝ URL PARAMS ==========
+            
+            function checkModalFromQueryParams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const showModal = urlParams.get('showModal');
+                
+                if (showModal === 'true') {
+                    setTimeout(() => {
+                        showModalOverlay();
+                    }, 0);
+                }
+            }
+            
+            function removeShowModalFromUrl() {
+                const url = new URL(window.location);
+                url.searchParams.delete('showModal');
+                window.history.replaceState({}, '', url.toString());
+            }
+            
+            // ========== HÀM XỬ LÝ MODAL ==========
+            
+            async function showModalOverlay() {
+                console.log('🔓 Showing modal...');
+                // Hiển thị loading
+                imageLoading.style.display = 'flex';
+                modalImage.style.display = 'none';
+                statusElement.style.display = 'block';
+                statusElement.textContent = 'Đang tải ảnh...';
+                imageTitle.style.display = 'block'; // Hiển thị title
+                
+                // Cập nhật title ngẫu nhiên
+                updateImageTitle();
+                
+                // Tải ảnh ngẫu nhiên từ thư mục
+                await loadRandomImageFromFolder();
+                
+                // Hiển thị modal
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function hideModalOverlay() {
+                console.log('🔒 Hiding modal...');
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                removeShowModalFromUrl();
+            }
+            
+            function handleOutsideClick(event) {
+                if (event.target === modalOverlay) {
+                    hideModalOverlay();
+                }
+            }
+            
+            function handleEscapeKey(event) {
+                if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    hideModalOverlay();
+                }
+            }
+            
+            // ========== HÀM CẬP NHẬT TITLE ==========
+            
+            function updateImageTitle() {
+                // Chọn title ngẫu nhiên từ danh sách
+                const randomIndex = Math.floor(Math.random() * IMAGE_TITLES.length);
+                const selectedTitle = IMAGE_TITLES[randomIndex];
+                
+                // Cập nhật title
+                imageTitle.textContent = selectedTitle;
+                console.log('📝 Image title updated:', selectedTitle);
+            }
+            
+            // ========== HÀM TÌM VÀ TẢI ẢNH TỪ THƯ MỤC ==========
+            
+            async function testImageExistence(imageName) {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    const imagePath = IMAGE_FOLDER + imageName;
+                    
+                    img.onload = function() {
+                        resolve({ 
+                            name: imageName, 
+                            path: imagePath,
+                            exists: true 
+                        });
+                    };
+                    
+                    img.onerror = function() {
+                        resolve({ 
+                            name: imageName, 
+                            path: imagePath,
+                            exists: false 
+                        });
+                    };
+                    
+                    img.src = imagePath;
+                });
+            }
+            
+            async function scanForImages() {
+                foundImages = [];
+                
+                // Danh sách tên ảnh có thể có
+                const possibleImageNames = [
+                    // Các tên phổ biến
+                    '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
+                    '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
+                    '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
+                    '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg',
+                    '21.jpg', '22.jpg', '23.jpg', '24.jpg', '25.jpg',
+                    '26.jpg', '27.jpg', '28.jpg', '29.jpg', '30.jpg',
+                    '31.jpg', '32.jpg', '33.jpg', '34.jpg', '35.jpg',
+                    '36.jpg', '37.jpg', '38.jpg', '39.jpg', '40.jpg',
+                    '41.jpg', '42.jpg', '43.jpg', '44.jpg', '45.jpg',
+                    '46.jpg', '47.jpg', '48.jpg', '49.jpg', '50.jpg',
+                    'image.jpg', 'photo.jpg', 'picture.jpg',
+                    'anh1.jpg', 'anh2.jpg', 'anh3.jpg',
+                    'hinh1.jpg', 'hinh2.jpg', 'hinh3.jpg',
+                    'qua.jpg', 'gift.jpg', 'present.jpg',
+                    
+                    // Các định dạng khác
+                    ...Array.from({length: 10}, (_, i) => `img${i+1}.jpeg`),
+                    ...Array.from({length: 10}, (_, i) => `image${i+1}.png`),
+                    ...Array.from({length: 10}, (_, i) => `photo${i+1}.gif`),
+                    ...Array.from({length: 10}, (_, i) => `pic${i+1}.webp`)
+                ];
+                
+                // Thêm các biến thể với số
+                for (let i = 1; i <= 50; i++) {
+                    possibleImageNames.push(`${i}.jpg`);
+                    possibleImageNames.push(`${i}.png`);
+                    possibleImageNames.push(`image${i}.jpg`);
+                    possibleImageNames.push(`photo${i}.jpg`);
+                    possibleImageNames.push(`anh${i}.jpg`);
+                }
+                
+                // Thử từng ảnh
+                const testPromises = possibleImageNames.map(name => testImageExistence(name));
+                const results = await Promise.all(testPromises);
+                
+                // Lọc ra các ảnh tồn tại
+                foundImages = results.filter(result => result.exists);
+                
+                return foundImages;
+            }
+            
+            async function loadRandomImageFromFolder() {
+                // Nếu chưa quét thư mục, quét ngay
+                if (foundImages.length === 0) {
+                    await scanForImages();
+                }
+                
+                if (foundImages.length === 0) {
+                    statusElement.textContent = 'Không tìm thấy ảnh nào trong thư mục ' + IMAGE_FOLDER;
+                    statusElement.style.color = '#f87171';
+                    statusElement.style.background = 'rgba(248, 113, 113, 0.3)';
+                    
+                    // Sử dụng ảnh mẫu từ Unsplash
+                    modalImage.src = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80&t=" + Date.now();
+                    modalImage.style.display = 'block';
+                    imageLoading.style.display = 'none';
+                    return;
+                }
+                
+                // Chọn random một ảnh
+                const randomIndex = Math.floor(Math.random() * foundImages.length);
+                const selectedImage = foundImages[randomIndex];
+                
+                // Thêm timestamp để tránh cache
+                const timestamp = Date.now();
+                const imageUrl = selectedImage.path + '?t=' + timestamp;
+                
+                // Đặt sự kiện onload
+                modalImage.onload = function() {
+                    statusElement.textContent = `Đã tải ảnh: ${selectedImage.name}`;
+                    statusElement.style.color = '#4ade80';
+                    statusElement.style.background = 'rgba(74, 222, 128, 0.3)';
+                    
+                    // Cập nhật title với tên file
+                    updateTitleWithFilename(selectedImage.name);
+                    
+                    // Thêm hiệu ứng fade in
+                    modalImage.classList.add('fade-in');
+                    
+                    // Ẩn loading
+                    imageLoading.style.display = 'none';
+                    modalImage.style.display = 'block';
+                };
+                
+                modalImage.onerror = function() {
+                    statusElement.textContent = 'Không thể tải ảnh: ' + selectedImage.name;
+                    statusElement.style.color = '#f87171';
+                    statusElement.style.background = 'rgba(248, 113, 113, 0.3)';
+                    imageLoading.style.display = 'none';
+                    
+                    // Thử ảnh tiếp theo
+                    setTimeout(() => {
+                        loadRandomImageFromFolder();
+                    }, 200);
+                };
+                
+                // Bắt đầu tải
+                modalImage.src = imageUrl;
+            }
+            
+            // Hàm cập nhật title với tên file
+            function updateTitleWithFilename(filename) {
+                // Loại bỏ đuôi file
+                const nameWithoutExt = filename.replace(/\.[^/.]+$/, "");
+                
+                // Có thể tạo title từ tên file
+                const customTitle = `🎉 Ảnh: ${nameWithoutExt}`;
+                
+                // Hoặc giữ title mặc định
+                // imageTitle.textContent = customTitle;
+            }
+            
+            // ========== HÀM HỖ TRỢ ==========
+            
+            function hideLoading() {
+                // Hàm này được gọi bởi onload của img element
+                imageLoading.style.display = 'none';
+                modalImage.style.display = 'block';
+            }
+            
+            function handleImageError() {
+                imageLoading.style.display = 'none';
+                modalImage.style.display = 'none';
+                
+                // Hiển thị fallback
+                const fallbackImage = document.createElement('div');
+                fallbackImage.style.cssText = `
+                    width: 100%;
+                    height: 70vh;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    flex-direction: column;
+                `;
+                fallbackImage.innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🏆</div>
+                        <div>Chúc mừng hoàn thành bài tập!</div>
+                        <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                            (Không tìm thấy ảnh trong thư mục)
+                        </div>
+                    </div>
+                `;
+                
+                document.querySelector('.modal-content').appendChild(fallbackImage);
+            }
+            
+            // ========== HÀM XỬ LÝ BÀI TẬP ==========
+            
+            function startAssignment() {
+                console.log('🎯 Start assignment clicked');
+                
+                // Giả lập hoàn thành bài tập
+                console.log(`✅ Hoàn thành bài tập: Phép Cộng Có Nhớ`);
+                
+                // Thêm query param để mở modal
+                const url = new URL(window.location);
+                url.searchParams.set('showModal', 'true');
+                window.history.replaceState({}, '', url.toString());
+                
+                // Hiển thị modal
+                showModalOverlay();
+            }
+            
+            // ========== XỬ LÝ NÚT EXAM TYPE ==========
+            
+            function setupExamTypeButtons() {
+                // Xử lý nút "Đề thi cần luyện"
+                if (practiceBtn) {
+                    practiceBtn.addEventListener('click', function() {
+                        practiceBtn.classList.add('active');
+                        if (allTestsBtn) allTestsBtn.classList.remove('active');
+                        console.log('Đã chọn: Đề thi cần luyện');
+                    });
+                }
+                
+                // Xử lý nút "Tất cả đề thi"
+                if (allTestsBtn) {
+                    allTestsBtn.addEventListener('click', function() {
+                        allTestsBtn.classList.add('active');
+                        if (practiceBtn) practiceBtn.classList.remove('active');
+                        console.log('Đã chọn: Tất cả đề thi');
+                    });
+                }
+            }
+            
+            // ========== KHỞI TẠO SỰ KIỆN ==========
+            
+            function initializeEventListeners() {
+                console.log('🔗 Initializing event listeners...');
+                
+                if (closeModalButton) {
+                    closeModalButton.addEventListener('click', hideModalOverlay);
+                }
+                
+                if (modalOverlay) {
+                    modalOverlay.addEventListener('click', handleOutsideClick);
+                }
+                
+                document.addEventListener('keydown', handleEscapeKey);
+                
+                // Gắn event cho start button
+                if (startAssignmentBtn) {
+                    startAssignmentBtn.addEventListener('click', startAssignment);
+                    console.log('✅ Start button event listener attached');
+                } else {
+                    console.warn('⚠️ Start button not found!');
+                }
+                
+                // Khởi tạo xử lý nút exam type
+                setupExamTypeButtons();
+            }
+            
+            function initializeApp() {
+                console.log('🚀 App initializing after DOM ready...');
+                initializeEventListeners();
+                checkModalFromQueryParams();
+                
+                // Expose hàm để test
+                window.showAppModal = showModalOverlay;
+                window.hideAppModal = hideModalOverlay;
+                
+                console.log('✅ App initialized successfully');
+                console.log('👉 Test modal by typing: showAppModal()');
+            }
+            
+            // ========== HÀM TIỆN ÍCH DEBUG ==========
+            
+            window.showTestModal = function() {
+                showModalOverlay();
+            };
+            
+            window.refreshImageList = function() {
+                foundImages = [];
+                scanForImages().then(() => {
+                    console.log(`Đã refresh! Tìm thấy ${foundImages.length} ảnh`);
+                });
+            };
+            
+            window.showImageInfo = function() {
+                console.log('=== THÔNG TIN ẢNH ===');
+                console.log(`Thư mục: ${IMAGE_FOLDER}`);
+                console.log(`Tìm thấy: ${foundImages.length} ảnh`);
+                console.log('Danh sách:', foundImages);
+            };
+            
+            // ========== CHẠY ỨNG DỤNG ==========
+            
+            // ĐỢI navbar load xong và DOM ready
+            function waitAndInitialize() {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Thêm delay để chắc chắn navbar.js đã chạy xong
+                        setTimeout(initializeApp, 300);
+                    });
+                } else {
+                    // DOM đã ready, nhưng vẫn delay để navbar chạy xong
+                    setTimeout(initializeApp, 300);
+                }
+            }
+            
+            // Bắt đầu app
+            waitAndInitialize();
+            
+            console.log('=== APP SCRIPT LOADED ===');
+            
+        })(); // END IIFE
+    </script>
+</body>
+</html>
