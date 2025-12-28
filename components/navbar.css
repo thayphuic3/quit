@@ -111,10 +111,10 @@
     color: #007bff;
 }
 
-.dropdown:hover .dropdown-content,
+/* .dropdown:hover .dropdown-content,
 .dropdown-content:hover {
     display: block;
-}
+} */
 
 .dropdown-toggle {
     cursor: pointer;

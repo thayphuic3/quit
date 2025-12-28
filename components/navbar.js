@@ -67,6 +67,74 @@ function fixNavbarLinks(inPagesFolder) {
 }
 
 
+
+
+// Thêm hàm này vào code của bạn
+function initNavbarDropdown() {
+    // Xử lý dropdown cho navbar
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    // Đóng tất cả dropdown
+    function closeAllDropdowns() {
+        document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+    
+    // Xử lý click cho dropdown
+    dropdownToggles.forEach(toggle => {
+        // Xóa event listeners cũ (nếu có)
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+        
+        // Gắn event listener mới
+        newToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const dropdown = this.closest('.dropdown');
+            const isActive = dropdown.classList.contains('active');
+            
+            closeAllDropdowns();
+            
+            if (!isActive) {
+                dropdown.classList.add('active');
+            }
+        });
+    });
+    
+    // Xử lý hamburger menu
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Đóng menu khi click ra ngoài
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown') && !e.target.closest('.menu-toggle')) {
+            closeAllDropdowns();
+            
+            // Đóng mobile menu
+            if (menuToggle && menuToggle.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+            }
+        }
+    });
+    
+    // Ngăn click trong dropdown content đóng dropdown
+    document.querySelectorAll('.dropdown-content').forEach(content => {
+        content.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+}
+
 // //sửa code
 // // Hàm khởi tạo navbar responsive
 // function initNavbarResponsive() {
