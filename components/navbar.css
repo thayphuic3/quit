@@ -116,6 +116,13 @@
     display: block;
 } */
 
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover {
+        display: block;
+    }
+}
+
 .dropdown-toggle {
     cursor: pointer;
     position: relative;
@@ -146,7 +153,11 @@
         padding: 10px 20px;
         font-size: 14px;
     }
+
+    
 }
+
+
 
 
 
@@ -196,6 +207,28 @@
 
 /* Mobile: dưới 768px */
 @media (max-width: 768px) {
+    /* ----------PHẦN BỔ SUNG GIÚP NGĂN HOVER DROPDOWN TRONG MOBILE----------------------- */
+    .dropdown:hover .dropdown-content {
+        display: none !important;
+    }
+    
+    /* Đảm bảo dropdown-content không tự hiển thị */
+    .dropdown-content:hover {
+        display: none !important;
+    }
+    
+    /* Chỉ hiển thị khi có class active */
+    .dropdown.active .dropdown-content {
+        display: block !important;
+    }
+    /* --------------------------------- */
+    
+
+
+    /* .dropdown:hover .dropdown-content {
+        display: none !important;
+        pointer-events: none;
+    } */
     .navbar {
         padding: 12px 20px;
     }
@@ -293,6 +326,8 @@
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
+
+    
 }
 
 /* Mobile nhỏ: dưới 576px */
