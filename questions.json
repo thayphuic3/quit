@@ -1,0 +1,349 @@
+{
+  "questions": [
+    {
+      "question": "1 + 1 = ?",
+      "options": ["1", "2", "3", "4"],
+      "correct": 1
+    },
+    {
+      "question": "Con gì có cánh biết bay?",
+      "options": ["Cá", "Chim", "Ếch", "Rắn"],
+      "correct": 1
+    },
+    {
+      "question": "Màu xanh của lá cây do chất gì tạo nên?",
+      "options": ["Diệp lục", "Caroten", "Anthocyanin", "Xanthophyll"],
+      "correct": 0
+    },
+    {
+      "question": "Bác Hồ tên thật là gì?",
+      "options": ["Nguyễn Sinh Cung", "Nguyễn Tất Thành", "Nguyễn Ái Quốc", "Cả 3 đều đúng"],
+      "correct": 3
+    },
+    {
+      "question": "3 × 4 = ?",
+      "options": ["7", "12", "9", "15"],
+      "correct": 1
+    },
+    {
+      "question": "Con vật nào đẻ trứng?",
+      "options": ["Chó", "Mèo", "Gà", "Bò"],
+      "correct": 2
+    },
+    {
+      "question": "Chữ cái nào là nguyên âm?",
+      "options": ["B", "C", "A", "D"],
+      "correct": 2
+    },
+    {
+      "question": "Một tuần có bao nhiêu ngày?",
+      "options": ["5", "6", "7", "8"],
+      "correct": 2
+    },
+    {
+      "question": "Trái Đất quay quanh cái gì?",
+      "options": ["Mặt Trăng", "Mặt Trời", "Sao Hỏa", "Ngôi sao"],
+      "correct": 1
+    },
+    {
+      "question": "10 - 5 = ?",
+      "options": ["3", "4", "5", "6"],
+      "correct": 2
+    },
+    {
+      "question": "Con vật nào sống dưới nước?",
+      "options": ["Chó", "Mèo", "Cá", "Thỏ"],
+      "correct": 2
+    },
+    {
+      "question": "Thủ đô của Việt Nam là gì?",
+      "options": ["TP.HCM", "Đà Nẵng", "Hà Nội", "Huế"],
+      "correct": 2
+    },
+    {
+      "question": "12 ÷ 3 = ?",
+      "options": ["2", "3", "4", "6"],
+      "correct": 2
+    },
+    {
+      "question": "Quả nào có màu đỏ?",
+      "options": ["Cam", "Dưa hấu", "Chuối", "Bưởi"],
+      "correct": 1
+    },
+    {
+      "question": "Mùa nào có Tết Nguyên Đán?",
+      "options": ["Xuân", "Hạ", "Thu", "Đông"],
+      "correct": 0
+    },
+    {
+      "question": "8 + 7 = ?",
+      "options": ["13", "14", "15", "16"],
+      "correct": 2
+    },
+    {
+      "question": "Con vật nào có vòi dài?",
+      "options": ["Hổ", "Voi", "Khỉ", "Gấu"],
+      "correct": 1
+    },
+    {
+      "question": "Chữ số La Mã V là số mấy?",
+      "options": ["1", "5", "10", "50"],
+      "correct": 1
+    },
+    {
+      "question": "Cây nào cho gỗ?",
+      "options": ["Lúa", "Ngô", "Xà cừ", "Khoai"],
+      "correct": 2
+    },
+    {
+      "question": "9 × 2 = ?",
+      "options": ["16", "18", "20", "22"],
+      "correct": 1
+    },
+    {
+      "question": "Mặt Trời mọc hướng nào?",
+      "options": ["Đông", "Tây", "Nam", "Bắc"],
+      "correct": 0
+    },
+    {
+      "question": "Động vật nào thuộc lớp chim?",
+      "options": ["Cá sấu", "Rùa", "Đại bàng", "Ếch"],
+      "correct": 2
+    },
+    {
+      "question": "20 ÷ 5 = ?",
+      "options": ["3", "4", "5", "6"],
+      "correct": 1
+    },
+    {
+      "question": "Loài hoa nào tượng trưng cho mùa xuân?",
+      "options": ["Hoa sen", "Hoa mai", "Hoa cúc", "Hoa hồng"],
+      "correct": 1
+    },
+    {
+      "question": "100 - 25 = ?",
+      "options": ["65", "70", "75", "80"],
+      "correct": 2
+    },
+    {
+      "question": "Chất nào cần cho sự cháy?",
+      "options": ["Nước", "Oxi", "Cát", "Đất"],
+      "correct": 1
+    },
+    {
+      "question": "Con sông nào chảy qua Hà Nội?",
+      "options": ["Sông Hồng", "Sông Đà", "Sông Mê Kông", "Sông Cửu Long"],
+      "correct": 0
+    },
+    {
+      "question": "6 × 7 = ?",
+      "options": ["36", "42", "48", "54"],
+      "correct": 1
+    },
+    {
+      "question": "Trái cây nào có nhiều vitamin C?",
+      "options": ["Chuối", "Cam", "Táo", "Nho"],
+      "correct": 1
+    },
+    {
+      "question": "Ngày Nhà giáo Việt Nam là ngày nào?",
+      "options": ["20/10", "20/11", "8/3", "1/6"],
+      "correct": 1
+    },
+    {
+      "question": "15 + 25 = ?",
+      "options": ["35", "40", "45", "50"],
+      "correct": 1
+    },
+    {
+      "question": "Con vật nào là động vật có vú?",
+      "options": ["Cá voi", "Cá mập", "Cá heo", "Cá chép"],
+      "correct": 2
+    },
+    {
+      "question": "Tháng nào có ít ngày nhất?",
+      "options": ["Tháng 1", "Tháng 2", "Tháng 6", "Tháng 12"],
+      "correct": 1
+    },
+    {
+      "question": "72 ÷ 8 = ?",
+      "options": ["7", "8", "9", "10"],
+      "correct": 2
+    },
+    {
+      "question": "Kim loại nào dùng làm dây điện?",
+      "options": ["Sắt", "Đồng", "Nhôm", "Vàng"],
+      "correct": 1
+    },
+    {
+      "question": "Tỉnh nào có biển?",
+      "options": ["Hà Giang", "Lào Cai", "Nghệ An", "Sơn La"],
+      "correct": 2
+    },
+    {
+      "question": "9 × 9 = ?",
+      "options": ["72", "81", "90", "99"],
+      "correct": 1
+    },
+    {
+      "question": "Cây lương thực chính của Việt Nam?",
+      "options": ["Ngô", "Khoai", "Sắn", "Lúa"],
+      "correct": 3
+    },
+    {
+      "question": "Góc vuông có bao nhiêu độ?",
+      "options": ["45°", "90°", "180°", "360°"],
+      "correct": 1
+    },
+    {
+      "question": "125 - 75 = ?",
+      "options": ["40", "50", "60", "70"],
+      "correct": 1
+    },
+    {
+      "question": "Động vật nào ngủ đông?",
+      "options": ["Gấu", "Hổ", "Khỉ", "Nai"],
+      "correct": 0
+    },
+    {
+      "question": "Dãy số nào toàn số chẵn?",
+      "options": ["2,4,6,8", "1,3,5,7", "2,5,8,11", "3,6,9,12"],
+      "correct": 0
+    },
+    {
+      "question": "Chất nào không tan trong nước?",
+      "options": ["Muối", "Đường", "Dầu ăn", "Bột mì"],
+      "correct": 2
+    },
+    {
+      "question": "54 ÷ 6 = ?",
+      "options": ["7", "8", "9", "10"],
+      "correct": 2
+    },
+    {
+      "question": "Con vật nào có mai?",
+      "options": ["Cua", "Tôm", "Rùa", "Ốc"],
+      "correct": 2
+    },
+    {
+      "question": "Số nào chia hết cho 5?",
+      "options": ["12", "15", "18", "21"],
+      "correct": 1
+    },
+    {
+      "question": "Mưa từ đâu rơi xuống?",
+      "options": ["Mặt đất", "Mây", "Mặt trời", "Gió"],
+      "correct": 1
+    },
+    {
+      "question": "7 × 8 = ?",
+      "options": ["48", "54", "56", "64"],
+      "correct": 2
+    },
+    {
+      "question": "Đồng bằng nào lớn nhất Việt Nam?",
+      "options": ["ĐB Sông Hồng", "ĐB Sông Cửu Long", "ĐB Duyên hải", "ĐB Thanh-Nghệ-Tĩnh"],
+      "correct": 1
+    },
+    {
+      "question": "Chất nào là chất khí?",
+      "options": ["Nước", "Đá", "Không khí", "Gỗ"],
+      "correct": 2
+    },
+    {
+      "question": "11 × 11 = ?",
+      "options": ["110", "121", "132", "143"],
+      "correct": 1
+    },
+    {
+      "question": "Loài hoa nào nở về đêm?",
+      "options": ["Hoa hồng", "Hoa sen", "Hoa quỳnh", "Hoa cúc"],
+      "correct": 2
+    },
+    {
+      "question": "Số nào là số nguyên tố?",
+      "options": ["4", "6", "7", "8"],
+      "correct": 2
+    },
+    {
+      "question": "Môn thể thao dùng vợt?",
+      "options": ["Bóng đá", "Bóng rổ", "Cầu lông", "Bơi lội"],
+      "correct": 2
+    },
+    {
+      "question": "144 ÷ 12 = ?",
+      "options": ["10", "11", "12", "13"],
+      "correct": 2
+    },
+    {
+      "question": "Động vật nào đẻ con?",
+      "options": ["Gà", "Vịt", "Mèo", "Chim"],
+      "correct": 2
+    },
+    {
+      "question": "Phân số 1/2 bằng bao nhiêu phần trăm?",
+      "options": ["25%", "50%", "75%", "100%"],
+      "correct": 1
+    },
+    {
+      "question": "Cây nào có rễ cọc?",
+      "options": ["Lúa", "Ngô", "Bàng", "Rau muống"],
+      "correct": 2
+    },
+    {
+      "question": "8 × 12 = ?",
+      "options": ["84", "92", "96", "104"],
+      "correct": 2
+    },
+    {
+      "question": "Nước nào ở châu Á?",
+      "options": ["Brazil", "Nhật Bản", "Pháp", "Mỹ"],
+      "correct": 1
+    },
+    {
+      "question": "Chất nào dẫn nhiệt tốt?",
+      "options": ["Gỗ", "Nhựa", "Kim loại", "Vải"],
+      "correct": 2
+    },
+    {
+      "question": "Diện tích hình vuông cạnh 5cm?",
+      "options": ["10cm²", "20cm²", "25cm²", "30cm²"],
+      "correct": 2
+    },
+    {
+      "question": "Động vật nào sống ở sa mạc?",
+      "options": ["Cá heo", "Lạc đà", "Gấu trúc", "Hươu cao cổ"],
+      "correct": 1
+    },
+    {
+      "question": "Số La Mã XX là số mấy?",
+      "options": ["10", "15", "20", "25"],
+      "correct": 2
+    },
+    {
+      "question": "13 × 5 = ?",
+      "options": ["55", "60", "65", "70"],
+      "correct": 2
+    },
+    {
+      "question": "Màu nào là màu cơ bản?",
+      "options": ["Tím", "Xanh lá", "Da cam", "Nâu"],
+      "correct": 1
+    },
+    {
+      "question": "1/4 + 1/4 = ?",
+      "options": ["1/8", "1/4", "1/2", "1"],
+      "correct": 2
+    },
+    {
+      "question": "Con vật nào di cư?",
+      "options": ["Chim én", "Gà", "Lợn", "Chó"],
+      "correct": 0
+    },
+    {
+      "question": "Chu vi hình chữ nhật 6cm×4cm?",
+      "options": ["16cm", "18cm", "20cm", "24cm"],
+      "correct": 2
+    }
+  ]
+}
