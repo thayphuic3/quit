@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,7 +142,8 @@
         /* Khu vực hiển thị ảnh cây - 16:9 DỌC */
         .tree-image-container {
             width: 100%;
-            max-width: 400px; /* Giới hạn chiều rộng tối đa */
+            max-width: 400px;
+            /* Giới hạn chiều rộng tối đa */
             position: relative;
             margin-bottom: 20px;
         }
@@ -149,7 +151,8 @@
         .image-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 177.78%; /* TỈ LỆ 16:9 DỌC (9/16 = 0.5625 => 1/0.5625 = 1.7778 = 177.78%) */
+            padding-bottom: 177.78%;
+            /* TỈ LỆ 16:9 DỌC (9/16 = 0.5625 => 1/0.5625 = 1.7778 = 177.78%) */
             background: #e8f5e9;
             border-radius: 15px;
             overflow: hidden;
@@ -162,7 +165,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Giữ tỉ lệ ảnh */
+            object-fit: cover;
+            /* Giữ tỉ lệ ảnh */
             transition: opacity 0.5s ease;
         }
 
@@ -250,7 +254,8 @@
         /* Các lựa chọn - BỐ TRÍ DỌC */
         .options-container {
             display: flex;
-            flex-direction: column; /* Đây là dòng quan trọng - bố trí dọc */
+            flex-direction: column;
+            /* Đây là dòng quan trọng - bố trí dọc */
             gap: 12px;
             margin-bottom: 25px;
         }
@@ -265,7 +270,8 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            width: 100%;
+            /* Chiếm toàn bộ chiều rộng */
         }
 
         .option:hover {
@@ -303,7 +309,8 @@
             border-radius: 50%;
             margin-right: 15px;
             font-weight: 700;
-            flex-shrink: 0; /* Không bị co lại */
+            flex-shrink: 0;
+            /* Không bị co lại */
         }
 
         .option.correct .option-label {
@@ -315,8 +322,10 @@
         }
 
         .option-text {
-            flex: 1; /* Chiếm phần không gian còn lại */
-            word-break: break-word; /* Tự động xuống dòng nếu text dài */
+            flex: 1;
+            /* Chiếm phần không gian còn lại */
+            word-break: break-word;
+            /* Tự động xuống dòng nếu text dài */
         }
 
         /* Feedback */
@@ -488,25 +497,62 @@
             font-weight: 900;
             margin-right: 10px;
         }
-        .fa-tree:before { content: "🌳"; }
-        .fa-question-circle:before { content: "❓"; }
-        .fa-forward:before { content: "⏭️"; }
-        .fa-redo:before { content: "🔄"; }
-        .fa-graduation-cap:before { content: "🎓"; }
-        .fa-leaf:before { content: "🍃"; }
-        .fa-trophy:before { content: "🏆"; }
-        .fa-save:before { content: "💾"; }
-        .fa-lightbulb:before { content: "💡"; }
-        .fa-seedling:before { content: "🌱"; }
-        .fa-arrow-up:before { content: "⬆️"; }
-        .fa-arrow-down:before { content: "⬇️"; }
+
+        .fa-tree:before {
+            content: "🌳";
+        }
+
+        .fa-question-circle:before {
+            content: "❓";
+        }
+
+        .fa-forward:before {
+            content: "⏭️";
+        }
+
+        .fa-redo:before {
+            content: "🔄";
+        }
+
+        .fa-graduation-cap:before {
+            content: "🎓";
+        }
+
+        .fa-leaf:before {
+            content: "🍃";
+        }
+
+        .fa-trophy:before {
+            content: "🏆";
+        }
+
+        .fa-save:before {
+            content: "💾";
+        }
+
+        .fa-lightbulb:before {
+            content: "💡";
+        }
+
+        .fa-seedling:before {
+            content: "🌱";
+        }
+
+        .fa-arrow-up:before {
+            content: "⬆️";
+        }
+
+        .fa-arrow-down:before {
+            content: "⬇️";
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
 
         <script src="components/navbar.js"></script>
-    <script>loadNavbar();</script>
+        <script>loadNavbar();</script>
         <header>
             <h1><span class="fas fa-tree"></span> CÂY KIẾN THỨC</h1>
             <p class="subtitle">Trả lời câu hỏi để giúp cây phát triển!</p>
@@ -577,7 +623,8 @@
 
         <footer>
             <p>Trò chơi học tập dành cho học sinh tiểu học & THCS</p>
-            <p class="hint"><span class="fas fa-lightbulb"></span> Trả lời đúng: <span class="fas fa-arrow-up"></span> CÂY SẼ LỚN VÀ ĐẸP| Trả lời sai: <span class="fas fa-arrow-down"></span> CÂY SẼ BÉ LẠI</p>
+            <p class="hint"><span class="fas fa-lightbulb"></span> Trả lời đúng: <span class="fas fa-arrow-up"></span>
+                CÂY SẼ LỚN VÀ ĐẸP| Trả lời sai: <span class="fas fa-arrow-down"></span> CÂY SẼ BÉ LẠI</p>
         </footer>
     </div>
 
@@ -590,7 +637,8 @@
                 <ul>
                     <li><span class="fas fa-arrow-up"></span> <strong>Trả lời đúng:</strong> Cây sẽ lớn thêm</li>
                     <li><span class="fas fa-arrow-down"></span> <strong>Trả lời sai:</strong> Cây sẽ nhỏ lại</li>
-                    <li><span class="fas fa-tree"></span> Cây sẽ phát triển qua 5 giai đoạn: Hạt giống → Mầm non → Cây nhỏ → Cây trưởng thành → Cây lớn</li>
+                    <li><span class="fas fa-tree"></span> Cây sẽ phát triển qua 5 giai đoạn: Hạt giống → Mầm non → Cây
+                        nhỏ → Cây trưởng thành → Cây lớn</li>
                     <li><span class="fas fa-trophy"></span> Mục tiêu: Đạt đến cây 60 tuổi - Cây hoàn thiện</li>
                     <li><span class="fas fa-save"></span> Tiến độ được lưu tự động</li>
                 </ul>
@@ -600,439 +648,417 @@
         </div>
     </div>
 
-    
+
 
 
     <script>
-    // ====== CẤU HÌNH 61 ẢNH TRONG THƯ MỤC treePicture ======
-    const totalImages = 60; // Tổng 60 giai đoạn (0-60 = 61 ảnh)
-    
-    // Tạo danh sách 61 ảnh từ treePicture/0.jpg đến treePicture/60.jpg
-    const treeImages = [];
-    for (let i = 0; i <= totalImages; i++) {
-        // Định dạng 1: 0.jpg, 1.jpg, ..., 60.jpg
-        treeImages.push(`treePicture/${i}.jpg`);
-        
-        // Nếu bạn muốn dùng định dạng khác, hãy comment dòng trên và dùng một trong các định dạng dưới:
-        // treeImages.push(`treePicture/tree_${i}.jpg`);
-        // treeImages.push(`treePicture/tree${i}.jpg`);
-        // treeImages.push(`treePicture/${i.toString().padStart(3, '0')}.jpg`); // 000.jpg, 001.jpg, ...
-    }
-    
-    console.log("Danh sách ảnh cây:", treeImages);
-    console.log("Tổng số ảnh:", treeImages.length);
+        // ====== CẤU HÌNH 61 ẢNH TRONG THƯ MỤC treePicture ======
+        const totalImages = 60; // Tổng 60 giai đoạn (0-60 = 61 ảnh)
 
-    // Hàm lấy tên giai đoạn dựa trên index
-    function getStageName(index) {
-        if (index === 0) return "Hạt giống";
-        if (index <= 10) return `Mầm non (${index}/60)`;
-        if (index <= 20) return `Cây nhỏ (${index}/60)`;
-        if (index <= 30) return `Cây phát triển (${index}/60)`;
-        if (index <= 40) return `Cây trung bình (${index}/60)`;
-        if (index <= 50) return `Cây lớn (${index}/60)`;
-        if (index <= 58) return `Cây trưởng thành (${index}/60)`;
-        if (index <= 59) return `Cây gần hoàn thiện (${index}/60)`;
-        if (index === 60) return "🎉 CÂY TRI THỨC HOÀN CHỈNH!";
-        return `Giai đoạn ${index}/60`;
-    }
+        // Tạo danh sách 61 ảnh từ treePicture/0.jpg đến treePicture/60.jpg
+        const treeImages = [];
+        for (let i = 0; i <= totalImages; i++) {
+            // Định dạng 1: 0.jpg, 1.jpg, ..., 60.jpg
+            treeImages.push(`treePicture/${i}.jpg`);
 
-    // Tên các giai đoạn
-    const treeStages = Array.from({length: 61}, (_, i) => getStageName(i));
+            // Nếu bạn muốn dùng định dạng khác, hãy comment dòng trên và dùng một trong các định dạng dưới:
+            // treeImages.push(`treePicture/tree_${i}.jpg`);
+            // treeImages.push(`treePicture/tree${i}.jpg`);
+            // treeImages.push(`treePicture/${i.toString().padStart(3, '0')}.jpg`); // 000.jpg, 001.jpg, ...
+        }
 
-    // ====== BIẾN TOÀN CỤC ======
-    let questions = [];
-    let usedQuestionIndices = new Set();
-    let currentQuestion = null;
-    let correctAnswersCount = 0;
-    let currentImageIndex = 0; // 0-60
-    let selectedOption = null;
-    let isAnswered = false;
-    let questionCounter = 1;
-    
-    // ====== DOM ELEMENTS ======
-    const questionText = document.getElementById('questionText');
-    const questionNumber = document.getElementById('questionNumber');
-    const optionsContainer = document.getElementById('optionsContainer');
-    const feedback = document.getElementById('feedback');
-    const nextBtn = document.getElementById('nextBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const startBtn = document.getElementById('startBtn');
-    const instructionModal = document.getElementById('instructionModal');
-    const imageCountElement = document.querySelector('.image-count');
-    const correctCountElement = document.getElementById('correctCount');
-    const progressBar = document.getElementById('progressBar');
-    const currentLevelElement = document.getElementById('currentLevel');
-    const treeStatus = document.getElementById('treeStatus');
-    const defaultImage = document.getElementById('defaultImage');
-    const imageWrapper = document.querySelector('.image-wrapper');
-    
-    // ====== HÀM CHÍNH ======
-    
-    // Tải câu hỏi từ file JSON
-    async function loadQuestions() {
-        try {
-            const response = await fetch('questions.json');
-            const data = await response.json();
-            questions = data.questions;
-            console.log(`Đã tải ${questions.length} câu hỏi`);
-            return true;
-        } catch (error) {
-            console.error('Lỗi khi tải câu hỏi:', error);
-            // Câu hỏi mặc định nếu không có file JSON
-            questions = [
-                {
-                    question: "Hành tinh nào lớn nhất trong Hệ Mặt Trời?",
-                    options: ["Trái Đất", "Sao Mộc", "Sao Hỏa", "Sao Thổ"],
-                    correct: 1
-                },
-                {
-                    question: "Đơn vị đo cường độ dòng điện là gì?",
-                    options: ["Volt", "Watt", "Ampe", "Ohm"],
-                    correct: 2
-                },
-                {
-                    question: "Nước sôi ở bao nhiêu độ C ở điều kiện tiêu chuẩn?",
-                    options: ["90°C", "100°C", "110°C", "120°C"],
-                    correct: 1
+        console.log("Danh sách ảnh cây:", treeImages);
+        console.log("Tổng số ảnh:", treeImages.length);
+
+        // Hàm lấy tên giai đoạn dựa trên index
+        function getStageName(index) {
+            if (index === 0) return "Hạt giống";
+            if (index <= 10) return `Mầm non (${index}/60)`;
+            if (index <= 20) return `Cây nhỏ (${index}/60)`;
+            if (index <= 30) return `Cây phát triển (${index}/60)`;
+            if (index <= 40) return `Cây trung bình (${index}/60)`;
+            if (index <= 50) return `Cây lớn (${index}/60)`;
+            if (index <= 58) return `Cây trưởng thành (${index}/60)`;
+            if (index <= 59) return `Cây gần hoàn thiện (${index}/60)`;
+            if (index === 60) return "🎉 CÂY TRI THỨC HOÀN CHỈNH!";
+            return `Giai đoạn ${index}/60`;
+        }
+
+        // Tên các giai đoạn
+        const treeStages = Array.from({ length: 61 }, (_, i) => getStageName(i));
+
+        // ====== BIẾN TOÀN CỤC ======
+        let questions = [];
+        let usedQuestionIndices = new Set();
+        let currentQuestion = null;
+        let correctAnswersCount = 0;
+        let currentImageIndex = 0; // 0-60
+        let selectedOption = null;
+        let isAnswered = false;
+        let questionCounter = 1;
+
+        // ====== DOM ELEMENTS ======
+        const questionText = document.getElementById('questionText');
+        const questionNumber = document.getElementById('questionNumber');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const feedback = document.getElementById('feedback');
+        const nextBtn = document.getElementById('nextBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const startBtn = document.getElementById('startBtn');
+        const instructionModal = document.getElementById('instructionModal');
+        const imageCountElement = document.querySelector('.image-count');
+        const correctCountElement = document.getElementById('correctCount');
+        const progressBar = document.getElementById('progressBar');
+        const currentLevelElement = document.getElementById('currentLevel');
+        const treeStatus = document.getElementById('treeStatus');
+        const defaultImage = document.getElementById('defaultImage');
+        const imageWrapper = document.querySelector('.image-wrapper');
+
+        // ====== HÀM CHÍNH ======
+
+        // Tải câu hỏi từ file JSON
+        async function loadQuestions() {
+            try {
+                const response = await fetch('questions.json');
+                const data = await response.json();
+                questions = data.questions;
+                console.log(`Đã tải ${questions.length} câu hỏi`);
+                return true;
+            } catch (error) {
+                console.error('Lỗi khi tải câu hỏi:', error);
+                // Câu hỏi mặc định nếu không có file JSON
+                questions = [
+                    {
+                        question: "Hành tinh nào lớn nhất trong Hệ Mặt Trời?",
+                        options: ["Trái Đất", "Sao Mộc", "Sao Hỏa", "Sao Thổ"],
+                        correct: 1
+                    },
+                    {
+                        question: "Đơn vị đo cường độ dòng điện là gì?",
+                        options: ["Volt", "Watt", "Ampe", "Ohm"],
+                        correct: 2
+                    },
+                    {
+                        question: "Nước sôi ở bao nhiêu độ C ở điều kiện tiêu chuẩn?",
+                        options: ["90°C", "100°C", "110°C", "120°C"],
+                        correct: 1
+                    }
+                ];
+                return false;
+            }
+        }
+
+        // Lấy câu hỏi ngẫu nhiên
+        function getRandomQuestion() {
+            // Reset nếu đã dùng hết
+            if (usedQuestionIndices.size >= questions.length) {
+                usedQuestionIndices.clear();
+            }
+
+            // Tìm câu chưa dùng
+            let availableIndices = [];
+            for (let i = 0; i < questions.length; i++) {
+                if (!usedQuestionIndices.has(i)) {
+                    availableIndices.push(i);
                 }
-            ];
-            return false;
+            }
+
+            // Chọn ngẫu nhiên
+            let randomIndex;
+            if (availableIndices.length > 0) {
+                randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+            } else {
+                randomIndex = Math.floor(Math.random() * questions.length);
+            }
+
+            usedQuestionIndices.add(randomIndex);
+            questionCounter++;
+
+            return {
+                ...questions[randomIndex],
+                originalIndex: randomIndex
+            };
         }
-    }
-    
-    // Lấy câu hỏi ngẫu nhiên
-    function getRandomQuestion() {
-        // Reset nếu đã dùng hết
-        if (usedQuestionIndices.size >= questions.length) {
-            usedQuestionIndices.clear();
-        }
-        
-        // Tìm câu chưa dùng
-        let availableIndices = [];
-        for (let i = 0; i < questions.length; i++) {
-            if (!usedQuestionIndices.has(i)) {
-                availableIndices.push(i);
+
+        // Khởi tạo game
+        async function initGame() {
+            await loadQuestions();
+            loadProgress();
+            updateUI();
+            updateTreeImage();
+            showRandomQuestion();
+            setupEventListeners();
+
+            if (currentImageIndex === 0 && correctAnswersCount === 0) {
+                setTimeout(() => {
+                    instructionModal.style.display = 'flex';
+                }, 500);
             }
         }
-        
-        // Chọn ngẫu nhiên
-        let randomIndex;
-        if (availableIndices.length > 0) {
-            randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-        } else {
-            randomIndex = Math.floor(Math.random() * questions.length);
-        }
-        
-        usedQuestionIndices.add(randomIndex);
-        questionCounter++;
-        
-        return {
-            ...questions[randomIndex],
-            originalIndex: randomIndex
-        };
-    }
-    
-    // Khởi tạo game
-    async function initGame() {
-        await loadQuestions();
-        loadProgress();
-        updateUI();
-        updateTreeImage();
-        showRandomQuestion();
-        setupEventListeners();
-        
-        if (currentImageIndex === 0 && correctAnswersCount === 0) {
-            setTimeout(() => {
-                instructionModal.style.display = 'flex';
-            }, 500);
-        }
-    }
-    
-    // Tải tiến độ
-    function loadProgress() {
-        const savedProgress = localStorage.getItem('knowledgeTreeProgress61');
-        if (savedProgress) {
-            const progress = JSON.parse(savedProgress);
-            currentImageIndex = progress.currentImageIndex || 0;
-            correctAnswersCount = progress.correctAnswersCount || 0;
-            questionCounter = progress.questionCounter || 1;
-            
-            if (progress.usedQuestions) {
-                usedQuestionIndices = new Set(progress.usedQuestions);
+
+        // Tải tiến độ
+        function loadProgress() {
+            const savedProgress = localStorage.getItem('knowledgeTreeProgress61');
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                currentImageIndex = progress.currentImageIndex || 0;
+                correctAnswersCount = progress.correctAnswersCount || 0;
+                questionCounter = progress.questionCounter || 1;
+
+                if (progress.usedQuestions) {
+                    usedQuestionIndices = new Set(progress.usedQuestions);
+                }
             }
         }
-    }
-    
-    // Lưu tiến độ
-    function saveProgress() {
-        const progress = {
-            currentImageIndex: currentImageIndex,
-            correctAnswersCount: correctAnswersCount,
-            questionCounter: questionCounter,
-            usedQuestions: Array.from(usedQuestionIndices)
-        };
-        localStorage.setItem('knowledgeTreeProgress61', JSON.stringify(progress));
-    }
-    
-    // Hiển thị câu hỏi
-    function showRandomQuestion() {
-        currentQuestion = getRandomQuestion();
-        
-        questionText.textContent = currentQuestion.question;
-        questionNumber.textContent = `Câu ${questionCounter}`;
-        
-        optionsContainer.innerHTML = '';
-        currentQuestion.options.forEach((option, index) => {
-            const optionElement = document.createElement('div');
-            optionElement.className = 'option';
-            optionElement.innerHTML = `
+
+        // Lưu tiến độ
+        function saveProgress() {
+            const progress = {
+                currentImageIndex: currentImageIndex,
+                correctAnswersCount: correctAnswersCount,
+                questionCounter: questionCounter,
+                usedQuestions: Array.from(usedQuestionIndices)
+            };
+            localStorage.setItem('knowledgeTreeProgress61', JSON.stringify(progress));
+        }
+
+        // Hiển thị câu hỏi
+        function showRandomQuestion() {
+            currentQuestion = getRandomQuestion();
+
+            questionText.textContent = currentQuestion.question;
+            questionNumber.textContent = `Câu ${questionCounter}`;
+
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `
                 <span class="option-label">${String.fromCharCode(65 + index)}</span>
                 <span class="option-text">${option}</span>
             `;
-            optionElement.dataset.index = index;
-            optionElement.addEventListener('click', () => selectOption(optionElement, index));
-            optionsContainer.appendChild(optionElement);
-        });
-        
-        resetQuestionState();
-    }
-    
-    // Chọn đáp án
-    function selectOption(optionElement, index) {
-        if (isAnswered) return;
-        
-        if (selectedOption) {
-            selectedOption.classList.remove('selected');
+                optionElement.dataset.index = index;
+                optionElement.addEventListener('click', () => selectOption(optionElement, index));
+                optionsContainer.appendChild(optionElement);
+            });
+
+            resetQuestionState();
         }
-        
-        optionElement.classList.add('selected');
-        selectedOption = optionElement;
-        nextBtn.disabled = false;
-    }
-    
-    // Kiểm tra đáp án
-    function checkAnswer() {
-        if (!selectedOption || isAnswered) return;
-        
-        const selectedIndex = parseInt(selectedOption.dataset.index);
-        const isCorrect = selectedIndex === currentQuestion.correct;
-        
-        isAnswered = true;
-        
-        if (isCorrect) {
-            selectedOption.classList.add('correct');
-            feedback.textContent = "🎉 Chính xác! Cây đã phát triển!";
-            feedback.classList.add('correct');
-            feedback.classList.remove('incorrect');
-            
-            correctAnswersCount++;
-            
-            // Tiến lên ảnh tiếp theo (không vượt quá 60)
-            if (currentImageIndex < totalImages) {
-                currentImageIndex++;
-                updateTreeImage();
+
+        // Chọn đáp án
+        function selectOption(optionElement, index) {
+            if (isAnswered) return;
+
+            if (selectedOption) {
+                selectedOption.classList.remove('selected');
             }
-            
-        } else {
-            selectedOption.classList.add('incorrect');
-            
-            const correctOption = optionsContainer.children[currentQuestion.correct];
-            correctOption.classList.add('correct');
-            
-            feedback.textContent = `❌ Chưa đúng! Đáp án đúng là: ${currentQuestion.options[currentQuestion.correct]}`;
-            feedback.classList.add('incorrect');
-            feedback.classList.remove('correct');
-            
-            // Lùi về ảnh trước (không nhỏ hơn 0)
-            if (currentImageIndex > 0) {
-                currentImageIndex--;
-                updateTreeImage();
-            }
+
+            optionElement.classList.add('selected');
+            selectedOption = optionElement;
+            nextBtn.disabled = false;
         }
-        
-        saveProgress();
-        updateUI();
-    }
-    
-    // Cập nhật ảnh cây
-    function updateTreeImage() {
-        // Xóa ảnh cũ
-        const existingImages = imageWrapper.querySelectorAll('.tree-image:not(#defaultImage)');
-        existingImages.forEach(img => img.remove());
-        
-        // Nếu là ảnh 0, hiển thị mặc định
-        if (currentImageIndex === 0) {
-            defaultImage.style.display = 'flex';
-            defaultImage.innerHTML = `
+
+        // Kiểm tra đáp án
+        function checkAnswer() {
+            if (!selectedOption || isAnswered) return;
+
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            const isCorrect = selectedIndex === currentQuestion.correct;
+
+            isAnswered = true;
+
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
+                feedback.textContent = "🎉 Chính xác! Cây đã phát triển!";
+                feedback.classList.add('correct');
+                feedback.classList.remove('incorrect');
+
+                correctAnswersCount++;
+
+                // Tiến lên ảnh tiếp theo (không vượt quá 60)
+                if (currentImageIndex < totalImages) {
+                    currentImageIndex++;
+                    updateTreeImage();
+                }
+
+            } else {
+                selectedOption.classList.add('incorrect');
+
+                const correctOption = optionsContainer.children[currentQuestion.correct];
+                correctOption.classList.add('correct');
+
+                feedback.textContent = `❌ Chưa đúng! Đáp án đúng là: ${currentQuestion.options[currentQuestion.correct]}`;
+                feedback.classList.add('incorrect');
+                feedback.classList.remove('correct');
+
+                // Lùi về ảnh trước (không nhỏ hơn 0)
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    updateTreeImage();
+                }
+            }
+
+            saveProgress();
+            updateUI();
+        }
+
+        // Cập nhật ảnh cây
+        function updateTreeImage() {
+            // Xóa ảnh cũ
+            const existingImages = imageWrapper.querySelectorAll('.tree-image:not(#defaultImage)');
+            existingImages.forEach(img => img.remove());
+
+            // Nếu là ảnh 0, hiển thị mặc định
+            if (currentImageIndex === 0) {
+                defaultImage.style.display = 'flex';
+                defaultImage.innerHTML = `
                 <span>🌱</span>
                 <div>Cây đang chờ bạn chăm sóc!</div>
             `;
-            return;
-        }
-        
-        // Ẩn ảnh mặc định
-        defaultImage.style.display = 'none';
-        
-        // Tạo ảnh mới
-        const img = document.createElement('img');
-        img.className = 'tree-image';
-        img.src = treeImages[currentImageIndex];
-        img.alt = `Cây giai đoạn ${currentImageIndex}`;
-        
-        // Xử lý lỗi tải ảnh
-        img.onerror = function() {
-            console.error(`Không thể tải ảnh: ${treeImages[currentImageIndex]}`);
-            this.style.display = 'none';
-            defaultImage.style.display = 'flex';
-            defaultImage.innerHTML = `
+                return;
+            }
+
+            // Ẩn ảnh mặc định
+            defaultImage.style.display = 'none';
+
+            // Tạo ảnh mới
+            const img = document.createElement('img');
+            img.className = 'tree-image';
+            img.src = treeImages[currentImageIndex];
+            img.alt = `Cây giai đoạn ${currentImageIndex}`;
+
+            // Xử lý lỗi tải ảnh
+            img.onerror = function () {
+                console.error(`Không thể tải ảnh: ${treeImages[currentImageIndex]}`);
+                this.style.display = 'none';
+                defaultImage.style.display = 'flex';
+                defaultImage.innerHTML = `
                 <span class="fas fa-tree"></span>
                 <div>Ảnh ${currentImageIndex}/60</div>
                 <small>Tên file: ${treeImages[currentImageIndex]}</small>
             `;
-        };
-        
-        img.onload = function() {
-            this.style.opacity = '1';
-        };
-        
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease';
-        
-        imageWrapper.appendChild(img);
-    }
-    
-    // Cập nhật trạng thái
-    function updateTreeStatus() {
-        // Cập nhật tên giai đoạn
-        currentLevelElement.textContent = getStageName(currentImageIndex);
-        
-        // Cập nhật thông báo
-        const percentage = Math.round((currentImageIndex / totalImages) * 100);
-        
-        if (currentImageIndex === 0) {
-            treeStatus.innerHTML = `<span class="fas fa-seedling"></span> Trả lời đúng để cây bắt đầu mọc! (0%)`;
-            treeStatus.style.color = "#2e7d32";
-            treeStatus.style.background = "#e8f5e9";
-        } else if (currentImageIndex < totalImages) {
-            treeStatus.innerHTML = `
+            };
+
+            img.onload = function () {
+                this.style.opacity = '1';
+            };
+
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.5s ease';
+
+            imageWrapper.appendChild(img);
+        }
+
+        // Cập nhật trạng thái
+        function updateTreeStatus() {
+            // Cập nhật tên giai đoạn
+            currentLevelElement.textContent = getStageName(currentImageIndex);
+
+            // Cập nhật thông báo
+            const percentage = Math.round((currentImageIndex / totalImages) * 100);
+
+            if (currentImageIndex === 0) {
+                treeStatus.innerHTML = `<span class="fas fa-seedling"></span> Trả lời đúng để cây bắt đầu mọc! (0%)`;
+                treeStatus.style.color = "#2e7d32";
+                treeStatus.style.background = "#e8f5e9";
+            } else if (currentImageIndex < totalImages) {
+                treeStatus.innerHTML = `
                 <span class="fas fa-tree"></span> 
                 ${getStageName(currentImageIndex)} - ${percentage}% hoàn thành
             `;
-            treeStatus.style.color = "#2e7d32";
-            treeStatus.style.background = "#e8f5e9";
-        } else {
-            treeStatus.innerHTML = `
+                treeStatus.style.color = "#2e7d32";
+                treeStatus.style.background = "#e8f5e9";
+            } else {
+                treeStatus.innerHTML = `
                 <span class="fas fa-trophy"></span> 
                 🎉 CHÚC MỪNG! Cây đã đạt giai đoạn cuối cùng! (100%)
             `;
-            treeStatus.style.background = "#fff3e0";
-            treeStatus.style.color = "#e65100";
+                treeStatus.style.background = "#fff3e0";
+                treeStatus.style.color = "#e65100";
+            }
         }
-    }
-    
-    // Cập nhật UI
-    function updateUI() {
-        // Cập nhật số ảnh (thay 5 thành 60)
-        imageCountElement.textContent = `${currentImageIndex} / ${totalImages}`;
-        
-        // Cập nhật số câu đúng
-        correctCountElement.textContent = `${correctAnswersCount}`;
-        
-        // Cập nhật thanh tiến trình
-        const progressPercentage = (currentImageIndex / totalImages) * 100;
-        progressBar.style.width = `${progressPercentage}%`;
-        
-        // Cập nhật màu thanh tiến trình theo % hoàn thành
-        if (progressPercentage < 30) {
-            progressBar.style.background = "linear-gradient(90deg, #81c784, #4caf50)";
-        } else if (progressPercentage < 60) {
-            progressBar.style.background = "linear-gradient(90deg, #4caf50, #2e7d32)";
-        } else if (progressPercentage < 90) {
-            progressBar.style.background = "linear-gradient(90deg, #2e7d32, #1b5e20)";
-        } else {
-            progressBar.style.background = "linear-gradient(90deg, #1b5e20, #004d40)";
+
+        // Cập nhật UI
+        function updateUI() {
+            // Cập nhật số ảnh (thay 5 thành 60)
+            imageCountElement.textContent = `${currentImageIndex} / ${totalImages}`;
+
+            // Cập nhật số câu đúng
+            correctCountElement.textContent = `${correctAnswersCount}`;
+
+            // Cập nhật thanh tiến trình
+            const progressPercentage = (currentImageIndex / totalImages) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+
+            // Cập nhật màu thanh tiến trình theo % hoàn thành
+            if (progressPercentage < 30) {
+                progressBar.style.background = "linear-gradient(90deg, #81c784, #4caf50)";
+            } else if (progressPercentage < 60) {
+                progressBar.style.background = "linear-gradient(90deg, #4caf50, #2e7d32)";
+            } else if (progressPercentage < 90) {
+                progressBar.style.background = "linear-gradient(90deg, #2e7d32, #1b5e20)";
+            } else {
+                progressBar.style.background = "linear-gradient(90deg, #1b5e20, #004d40)";
+            }
+
+            // Cập nhật trạng thái cây
+            updateTreeStatus();
         }
-        
-        // Cập nhật trạng thái cây
-        updateTreeStatus();
-    }
-    
-    // Câu hỏi tiếp theo
-    function nextQuestion() {
-        showRandomQuestion();
-    }
-    
-    // Reset trạng thái câu hỏi
-    function resetQuestionState() {
-        selectedOption = null;
-        isAnswered = false;
-        nextBtn.disabled = true;
-        feedback.textContent = "Chọn một đáp án để tiếp tục!";
-        feedback.className = 'feedback';
-        nextBtn.innerHTML = '<span class="fas fa-check"></span> Kiểm tra';
-    }
-    
-    // Reset game
-    function resetGame() {
-        if (confirm("Bạn có chắc muốn bắt đầu lại? Toàn bộ tiến độ sẽ mất!")) {
-            currentImageIndex = 0;
-            correctAnswersCount = 0;
-            questionCounter = 1;
-            usedQuestionIndices.clear();
-            
-            updateTreeImage();
-            localStorage.removeItem('knowledgeTreeProgress61');
-            
-            updateUI();
+
+        // Câu hỏi tiếp theo
+        function nextQuestion() {
             showRandomQuestion();
         }
-    }
-    
-    // Cập nhật modal hướng dẫn cho 61 giai đoạn
-    function updateInstructionModal() {
-        const modalContent = document.querySelector('.modal-content ul');
-        if (modalContent) {
-            const lastLi = modalContent.querySelector('li:nth-child(3)');
-            if (lastLi) {
-                lastLi.innerHTML = '<span class="fas fa-tree"></span> Cây sẽ phát triển qua 61 giai đoạn: Hạt giống (0) → ... → Cây hoàn thiện (60)';
-            }
-            
-            const trophyLi = modalContent.querySelector('li:nth-child(4)');
-            if (trophyLi) {
-                trophyLi.innerHTML = '<span class="fas fa-trophy"></span> Mục tiêu: Đạt đến ảnh thứ 60 - Cây hoàn thiện';
+
+        // Reset trạng thái câu hỏi
+        function resetQuestionState() {
+            selectedOption = null;
+            isAnswered = false;
+            nextBtn.disabled = true;
+            feedback.textContent = "Chọn một đáp án để tiếp tục!";
+            feedback.className = 'feedback';
+            nextBtn.innerHTML = '<span class="fas fa-check"></span> Kiểm tra';
+        }
+
+        // Reset game
+        function resetGame() {
+            if (confirm("Bạn có chắc muốn bắt đầu lại? Toàn bộ tiến độ sẽ mất!")) {
+                currentImageIndex = 0;
+                correctAnswersCount = 0;
+                questionCounter = 1;
+                usedQuestionIndices.clear();
+
+                updateTreeImage();
+                localStorage.removeItem('knowledgeTreeProgress61');
+
+                updateUI();
+                showRandomQuestion();
             }
         }
-    }
-    
-    // Thiết lập sự kiện
-    function setupEventListeners() {
-        // Cập nhật modal hướng dẫn
-        updateInstructionModal();
-        
-        // Nút tiếp theo
-        nextBtn.addEventListener('click', function() {
-            if (!isAnswered) {
-                checkAnswer();
-                setTimeout(() => {
-                    nextBtn.innerHTML = '<span class="fas fa-forward"></span> Câu tiếp theo';
-                }, 100);
-            } else {
-                nextQuestion();
-                nextBtn.innerHTML = '<span class="fas fa-check"></span> Kiểm tra';
+
+        // Cập nhật modal hướng dẫn cho 61 giai đoạn
+        function updateInstructionModal() {
+            const modalContent = document.querySelector('.modal-content ul');
+            if (modalContent) {
+                const lastLi = modalContent.querySelector('li:nth-child(3)');
+                if (lastLi) {
+                    lastLi.innerHTML = '<span class="fas fa-tree"></span> Cây sẽ phát triển qua 61 giai đoạn: Hạt giống (0) → ... → Cây hoàn thiện (60)';
+                }
+
+                const trophyLi = modalContent.querySelector('li:nth-child(4)');
+                if (trophyLi) {
+                    trophyLi.innerHTML = '<span class="fas fa-trophy"></span> Mục tiêu: Đạt đến ảnh thứ 60 - Cây hoàn thiện';
+                }
             }
-        });
-        
-        // Nút reset
-        resetBtn.addEventListener('click', resetGame);
-        
-        // Nút bắt đầu
-        startBtn.addEventListener('click', function() {
-            instructionModal.style.display = 'none';
-        });
-        
-        // Phím Enter
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' && !nextBtn.disabled) {
+        }
+
+        // Thiết lập sự kiện
+        function setupEventListeners() {
+            // Cập nhật modal hướng dẫn
+            updateInstructionModal();
+
+            // Nút tiếp theo
+            nextBtn.addEventListener('click', function () {
                 if (!isAnswered) {
                     checkAnswer();
                     setTimeout(() => {
@@ -1042,23 +1068,46 @@
                     nextQuestion();
                     nextBtn.innerHTML = '<span class="fas fa-check"></span> Kiểm tra';
                 }
-            }
-        });
-        
-        // Phím số 1-4 để chọn đáp án nhanh
-        document.addEventListener('keydown', function(event) {
-            if (!isAnswered && event.key >= '1' && event.key <= '4') {
-                const index = parseInt(event.key) - 1;
-                const optionElement = optionsContainer.children[index];
-                if (optionElement) {
-                    selectOption(optionElement, index);
+            });
+
+            // Nút reset
+            resetBtn.addEventListener('click', resetGame);
+
+            // Nút bắt đầu
+            startBtn.addEventListener('click', function () {
+                instructionModal.style.display = 'none';
+            });
+
+            // Phím Enter
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' && !nextBtn.disabled) {
+                    if (!isAnswered) {
+                        checkAnswer();
+                        setTimeout(() => {
+                            nextBtn.innerHTML = '<span class="fas fa-forward"></span> Câu tiếp theo';
+                        }, 100);
+                    } else {
+                        nextQuestion();
+                        nextBtn.innerHTML = '<span class="fas fa-check"></span> Kiểm tra';
+                    }
                 }
-            }
-        });
-    }
-    
-    // Khởi chạy trò chơi
-    initGame();
-</script>
+            });
+
+            // Phím số 1-4 để chọn đáp án nhanh
+            document.addEventListener('keydown', function (event) {
+                if (!isAnswered && event.key >= '1' && event.key <= '4') {
+                    const index = parseInt(event.key) - 1;
+                    const optionElement = optionsContainer.children[index];
+                    if (optionElement) {
+                        selectOption(optionElement, index);
+                    }
+                }
+            });
+        }
+
+        // Khởi chạy trò chơi
+        initGame();
+    </script>
 </body>
+
 </html>
